@@ -1,6 +1,8 @@
 from sqlalchemy.orm import Session
 from .. import schema, database, models
-from fastapi import HTTPException
+from fastapi import HTTPException, Depends
+
+get_db=database.get_db
 
 
 def get_all(db: Session):
@@ -9,16 +11,15 @@ def get_all(db: Session):
 
 
 
-def create_blog(request: schema.Blog, db: Session):
-    user = db.query(models.User).filter(models.User.id == request.user_id).first()
-    if not user:
-        raise HTTPException(status_code=404, detail="User not found")
-
-    new_blog = models.Blog(
-        title=request.title,
-        body=request.body,
-        user_id=user.id
-    )
+def create_blog(id,request: schema.Blog, db: Session=Depends(get_db)):
+    # Getting user from database (assuming user with id=1 exists)
+    user = db.query(models.User).filter(models.User.id == id).first()
+    if user:
+            new_blog = models.Blog(
+                title=request.title,
+                body=request.body,
+            
+            )
 
     db.add(new_blog)
     db.commit()
@@ -26,13 +27,13 @@ def create_blog(request: schema.Blog, db: Session):
     return new_blog
 
 
-def get_blog_by_id(id: int, db: Session):
+def get_blog_by_id(id: int, db: Session=Depends(get_db)):
     blog = db.query(models.Blog).filter(models.Blog.id == id).first()
     if not blog:
         raise HTTPException(status_code=404, detail="Blog not found")
     return blog
 
-def delete_blog(id: int, db: Session):
+def delete_blog(id: int, db: Session=Depends(get_db)):
     blog = db.query(models.Blog).filter(models.Blog.id == id)
     if not blog.first():
         raise HTTPException(status_code=404, detail="Blog not found")
@@ -41,7 +42,7 @@ def delete_blog(id: int, db: Session):
     return {'done'}
 
 
-def update_blog(id: int, request: schema.Blog, db: Session):
+def update_blog(id: int, request: schema.Blog, db: Session=Depends(get_db)):
     blog = db.query(models.Blog).filter(models.Blog.id == id)
     if not blog.first():
         raise HTTPException(status_code=404, detail="Blog not found")
