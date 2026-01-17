@@ -11,14 +11,14 @@ def get_all(db: Session):
 
 
 
-def create_blog(id,request: schema.Blog, db: Session=Depends(get_db)):
+def create_blog(id,request: schema.Blog, db:Session):
     # Getting user from database (assuming user with id=1 exists)
-    user = db.query(models.User).filter(models.User.id == id).first()
-    if user:
-            new_blog = models.Blog(
+    user = db.query(models.User).filter(models.User.id == id)
+   
+    new_blog = models.Blog(
                 title=request.title,
                 body=request.body,
-            
+                 owner=user
             )
 
     db.add(new_blog)
@@ -27,13 +27,13 @@ def create_blog(id,request: schema.Blog, db: Session=Depends(get_db)):
     return new_blog
 
 
-def get_blog_by_id(id: int, db: Session=Depends(get_db)):
+def get_blog_by_id(id: int, db: Session):
     blog = db.query(models.Blog).filter(models.Blog.id == id).first()
     if not blog:
         raise HTTPException(status_code=404, detail="Blog not found")
     return blog
 
-def delete_blog(id: int, db: Session=Depends(get_db)):
+def delete_blog(id: int, db: Session):
     blog = db.query(models.Blog).filter(models.Blog.id == id)
     if not blog.first():
         raise HTTPException(status_code=404, detail="Blog not found")
@@ -42,7 +42,7 @@ def delete_blog(id: int, db: Session=Depends(get_db)):
     return {'done'}
 
 
-def update_blog(id: int, request: schema.Blog, db: Session=Depends(get_db)):
+def update_blog(id: int, request: schema.Blog, db: Session):
     blog = db.query(models.Blog).filter(models.Blog.id == id)
     if not blog.first():
         raise HTTPException(status_code=404, detail="Blog not found")

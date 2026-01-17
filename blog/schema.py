@@ -1,6 +1,15 @@
 from pydantic import BaseModel
 from typing import List
 
+
+class User(BaseModel):
+    name: str
+    email: str
+    password: str
+    blogs: List['Blog'] = []
+
+    class Config:
+        from_attributes = True
 class UserResponse(BaseModel):
     id: int
     name: str
@@ -10,7 +19,7 @@ class UserResponse(BaseModel):
         from_attributes = True
 
 
-class BlogCreate(BaseModel):
+class Blog(BaseModel):
     title: str
     body: str
 
@@ -23,3 +32,17 @@ class BlogResponse(BaseModel):
 
     class Config:
         from_attributes = True
+
+
+class Login(BaseModel):
+    username:str
+    password:str
+
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+
+
+class TokenData(BaseModel):
+    username: str | None = None
