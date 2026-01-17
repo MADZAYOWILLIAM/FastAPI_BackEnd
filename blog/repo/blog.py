@@ -1,0 +1,53 @@
+from sqlalchemy.orm import Session
+from .. import schema, database, models
+from fastapi import HTTPException
+
+
+def get_all(db: Session):
+    blogs = db.query(models.Blog).all()
+    return blogs
+
+
+
+def create_blog(request: schema.Blog, db: Session):
+    user = db.query(models.User).filter(models.User.id == request.user_id).first()
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+
+    new_blog = models.Blog(
+        title=request.title,
+        body=request.body,
+        user_id=user.id
+    )
+
+    db.add(new_blog)
+    db.commit()
+    db.refresh(new_blog)
+    return new_blog
+
+
+def get_blog_by_id(id: int, db: Session):
+    blog = db.query(models.Blog).filter(models.Blog.id == id).first()
+    if not blog:
+        raise HTTPException(status_code=404, detail="Blog not found")
+    return blog
+
+def delete_blog(id: int, db: Session):
+    blog = db.query(models.Blog).filter(models.Blog.id == id)
+    if not blog.first():
+        raise HTTPException(status_code=404, detail="Blog not found")
+    blog.delete(synchronize_session=False)
+    db.commit()
+    return {'done'}
+
+
+def update_blog(id: int, request: schema.Blog, db: Session):
+    blog = db.query(models.Blog).filter(models.Blog.id == id)
+    if not blog.first():
+        raise HTTPException(status_code=404, detail="Blog not found")
+    blog.update({
+        'title': request.title,
+        'body': request.body
+    })
+    db.commit()
+    return 'Blog Updated Successfully'
