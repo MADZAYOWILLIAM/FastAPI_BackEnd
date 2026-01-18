@@ -15,13 +15,13 @@ router=APIRouter(
 
 
 @router.get('/',)
-def show_all(db:Session=Depends(get_db),current_user:schema.User=Depends(oauth.get_current_user)):
+def show_all(db:Session=Depends(get_db),current_user:schema.UserResponse=Depends(oauth.get_current_user)):
     return blog.get_all(db)
 
 
 @router.post("/", status_code=201, )
-def create(request: schema.Blog, db: Session = Depends(get_db)):
-    return blog.create_blog(request, db,id)
+def create(request: schema.Blog, db: Session = Depends(get_db), current_user: schema.UserResponse = Depends(oauth.get_current_user)):
+    return blog.create_blog(request, db, current_user)
 
 
 @router.get('/{id}', status_code=200, response_model=schema.BlogResponse)

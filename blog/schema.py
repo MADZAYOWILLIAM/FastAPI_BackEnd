@@ -72,6 +72,14 @@ class ProgramResponse(BaseModel):
 
 
 
+class ServiceCreate(BaseModel):
+    name:str
+    description:str
+    price:float
+
+    class Config:
+        from_attributes = True
+
 class Service(BaseModel):
     id:int
     name:str

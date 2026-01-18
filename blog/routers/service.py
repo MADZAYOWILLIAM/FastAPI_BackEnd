@@ -18,7 +18,7 @@ def show_services(db:Session=Depends(get_db)):
    return service.get_all(db)
 
 @router.post('/',response_model=schema.ServiceResponse)
-def create_service(request:schema.Service,db:Session=Depends(get_db), current_user: schema.UserResponse = Depends(oauth.get_current_user)):
+def create_service(request:schema.ServiceCreate,db:Session=Depends(get_db), current_user: schema.UserResponse = Depends(oauth.get_current_user)):
    return service.create_service(request,db)
 
 
