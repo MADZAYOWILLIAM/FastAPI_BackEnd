@@ -1,7 +1,6 @@
 from datetime import datetime, timedelta, timezone
 from jose import jwt, JWTError
 from typing  import Optional
-from . import token
 from . import schema
 
 
@@ -24,13 +23,13 @@ def create_access_token(data: dict, expires_delta: timedelta | None = None):
 
 
 
-def verify_access_token(token: str, credentials_exception):
+def verify_access_token(token_str: str, credentials_exception):
     try:
-        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-        username: str = payload.get("sub")
+        payload = jwt.decode(token_str, SECRET_KEY, algorithms=[ALGORITHM])
+        username: str | None = payload.get("sub")
         if username is None:
             raise credentials_exception
-        token_data = schema.TokenData(username=username)
+        return schema.TokenData(username=username)
     except JWTError:
         raise credentials_exception
     

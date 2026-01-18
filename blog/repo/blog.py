@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 from .. import schema, database, models
-from fastapi import HTTPException, Depends
+from fastapi import HTTPException
 
 get_db=database.get_db
 

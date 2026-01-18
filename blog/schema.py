@@ -46,3 +46,86 @@ class Token(BaseModel):
 
 class TokenData(BaseModel):
     username: str | None = None
+
+
+
+
+class Program(BaseModel):
+    name: str
+    description: str
+    start_date: str
+    end_date: str
+
+    class Config:
+        from_attributes = True
+
+
+class ProgramResponse(BaseModel):
+   
+    name:str
+    description:str
+    start_date:str
+    end_date:str
+
+    class Config:
+        from_attributes = True
+
+
+
+class Service(BaseModel):
+    id:int
+    name:str
+    description:str
+    price:float
+    
+    class Config:
+        from_attributes = True
+
+class ServiceResponse(BaseModel):
+    name:str
+    description:str
+    price:float
+
+    class Config:
+        from_attributes = True
+
+
+
+class Enrollment_Service(BaseModel):
+    service_id: int
+    date_enrolled: str
+    status: str
+
+    class Config:
+        from_attributes = True
+
+
+
+class Enrollment_Program(BaseModel):
+    program_id: int
+    user_id: int
+    date_enrolled: str
+    status: str
+
+    class Config:
+        from_attributes = True
+
+
+class Event(BaseModel):
+    id:int
+    name:str
+    description:str
+    location:str
+    date:str
+
+    class Config:
+        from_attributes = True
+
+class EventResponse(BaseModel):
+    name:str
+    description:str
+    location:str
+    date:str
+
+    class Config:
+        from_attributes=True
