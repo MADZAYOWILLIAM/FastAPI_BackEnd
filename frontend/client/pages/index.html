@@ -11,6 +11,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
         rel="stylesheet" />
+    <link rel="stylesheet" href="../styles/index.css">
     <style type="text/tailwindcss">
         :root {
             --primary-blue: #2563eb;
@@ -110,6 +111,7 @@
 </head>
 
 <body class="bg-white">
+    <div class="scroll-progress"></div>
     <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-sm border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
@@ -205,63 +207,7 @@
                     class="text-3xl font-bold text-[var(--primary-blue)] inline-block border-b-4 border-slate-800 pb-2 animate-on-scroll slide-up">
                     Our Programs</h2>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div
-                    class="border-2 border-slate-800 rounded-[2rem] p-6 flex flex-col items-center text-center animate-on-scroll slide-up stagger-1 hover:shadow-lg transition-shadow">
-                    <h3 class="text-lg font-bold mb-6">Leadership Mastery</h3>
-                    <div class="w-32 h-32 border-2 border-slate-800 diamond-clip mb-6 p-1 animate-on-scroll scale-up">
-                        <img class="w-full h-full object-cover diamond-clip"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZ_aRbVSvw_BauzlgSea8OfeqD11u5priFC2yX6NniI-WFeG6ln3zCEGt-AJCDkK0JqZt479ESeLBTxmyLCySK4oVtdrIqtsHzjBeYeJ3pKcdi0RbnpR5YsxR4zN8tq0k9TM3wDQADdBuUsg30Zb1sFlguw8F0nKdYr5VbQQQvxSMgmG3qE9qjyEjN_f4QBtfxwXHU-Zau0dt4V85LRoeoxb2NFdMUP2zsddwhtNsXiEgA_ELgPJSCGC8sykUttGFc4eswTOevG7VU" />
-                    </div>
-                    <p class="text-sm text-slate-600 mb-8 px-2">Structured development path for emerging leaders seeking
-                        to scale their impact.</p>
-                    <button
-                        class="mt-auto flex items-center gap-2 border border-slate-800 px-4 py-1.5 rounded-full text-xs font-bold hover:bg-slate-100 transition-colors uppercase tracking-wider">
-                        See More <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                    </button>
-                </div>
-                <div
-                    class="border-2 border-slate-800 rounded-[2rem] p-6 flex flex-col items-center text-center animate-on-scroll slide-up stagger-2 hover:shadow-lg transition-shadow">
-                    <h3 class="text-lg font-bold mb-6">Exec Coaching</h3>
-                    <div class="w-32 h-32 border-2 border-slate-800 diamond-clip mb-6 p-1 animate-on-scroll scale-up">
-                        <img class="w-full h-full object-cover diamond-clip"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVFZKllsWQH1EfLmmQMSF0Db8LzcTTr1lj38Bhf4fQlDTo-wh6OdjA7n1hjMaXLVoXY_gFNXqcWAIHhGZh0zssXn2AvHwCZG41AP2c8vDAtIIhHxZYH4aL3gHrCBGnWSSVoTOVbEEXJ-IssH58DOZXoRKWeIb0sNV2t7YHQHoPhGyVVsV4tTRBH98QGZFDcLqVaK981mfQ04E9ECxrc1CS-5D1tP09GtAP2ATR_DdwARQrmL2TTWk94fIdPH3P_Hls3pr7MkAakIwI" />
-                    </div>
-                    <p class="text-sm text-slate-600 mb-8 px-2">Personalized one-on-one sessions with industry veterans.
-                    </p>
-                    <button
-                        class="mt-auto flex items-center gap-2 border border-slate-800 px-4 py-1.5 rounded-full text-xs font-bold hover:bg-slate-100 transition-colors uppercase tracking-wider">
-                        See More <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                    </button>
-                </div>
-                <div
-                    class="border-2 border-slate-800 rounded-[2rem] p-6 flex flex-col items-center text-center animate-on-scroll slide-up stagger-3 hover:shadow-lg transition-shadow">
-                    <h3 class="text-lg font-bold mb-6">Team Synergy</h3>
-                    <div class="w-32 h-32 border-2 border-slate-800 diamond-clip mb-6 p-1 animate-on-scroll scale-up">
-                        <img class="w-full h-full object-cover diamond-clip"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDvAc8FWNb4EDnhnp5jH4E0DcGMKzjFzIwWFXtuBP-S6YV30VdZftyzgUtLQYjr4wLcSJiG-0jnUFi8Tka1uSagxzzwSgnxSImUoOGpf3HODeFA6ZjqpsAX9wSeaWDwSYThom3CvBHPzwCyEui5wxKMIrU6I22-5Ih1MZKD8fFwutdSpbVJ_oKZup6DfX3DRUEddsQXgRFu0MSfCkGNwM6tsNFOP5CO3wo6D8_fKMbT9yrX5OQFWh6TwZMpBihUg2Y4fsIYQStA4nU" />
-                    </div>
-                    <p class="text-sm text-slate-600 mb-8 px-2">Workshops designed to unify distributed teams and boost
-                        productivity.</p>
-                    <button
-                        class="mt-auto flex items-center gap-2 border border-slate-800 px-4 py-1.5 rounded-full text-xs font-bold hover:bg-slate-100 transition-colors uppercase tracking-wider">
-                        See More <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                    </button>
-                </div>
-                <div
-                    class="border-2 border-slate-800 rounded-[2rem] p-6 flex flex-col items-center text-center animate-on-scroll slide-up stagger-4 hover:shadow-lg transition-shadow">
-                    <h3 class="text-lg font-bold mb-6">Digital Pivot</h3>
-                    <div class="w-32 h-32 border-2 border-slate-800 diamond-clip mb-6 p-1 animate-on-scroll scale-up">
-                        <img class="w-full h-full object-cover diamond-clip"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuChrAMxx1xrKd3M5u0Ul0qOxpbPenYaXvsScEgsa5ULztsrOL-bUJApJAioRx66ysVNwE6aQIRPXJWOyy1eLdS5wJeI3DlZhaDkicroWFyMR2-ob71ILhR3-iP5NBo4PXyBkJusLNVnuNUEQfqh6UMZGg6nu2gTHYIHYIfIl5BP3aXJn43IyLGO2VIxzjI-CeFJplRV4yFZ0FY4rwKTFJngPDxGDqH_VuiQMmzraYMXb82lH-H3DmnIJqMjDfHLKuyuWWQkCNwftg0G" />
-                    </div>
-                    <p class="text-sm text-slate-600 mb-8 px-2">Navigate the complexities of organizational digital
-                        transformation.</p>
-                    <button
-                        class="mt-auto flex items-center gap-2 border border-slate-800 px-4 py-1.5 rounded-full text-xs font-bold hover:bg-slate-100 transition-colors uppercase tracking-wider">
-                        See More <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                    </button>
-                </div>
+            <div class="programs-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             </div>
         </div>
     </section>
@@ -272,69 +218,13 @@
                     class="text-3xl font-bold text-[var(--primary-blue)] inline-block border-b-4 border-slate-800 pb-2 animate-on-scroll slide-up">
                     Our Services</h2>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div
-                    class="border-2 border-slate-800 rounded-[2rem] p-6 flex flex-col items-center text-center animate-on-scroll slide-up stagger-1 hover:shadow-lg transition-shadow">
-                    <h3 class="text-lg font-bold mb-6">Strategy Audit</h3>
-                    <div class="w-32 h-32 border-2 border-slate-800 diamond-clip mb-6 p-1 animate-on-scroll scale-up">
-                        <img class="w-full h-full object-cover diamond-clip"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbqwSV465QZvDVRZTBFh2zyNUd8qrxXphrW9eu0hj02-XVLyO_UwaBCTFmTuH-qnKmMqAxngbbo-6eROqhl3OErSulUEZz-DrtrU5suD7YqZRxrVIrPtulM5NAwlFsJ1FsYwRHmU3LWEQxFaAF1daXF06c_l3M9dUFlkhUp6Bx6vEnPwZhZlwTrUE4Da_wsdpCG0MMCzYNiXbu8vUGfNsJPm95HuQKcD_nh2GSFAESfCkPGzGVPy6gpA9y09IhSxTyqDS8c9jf9h9-" />
-                    </div>
-                    <p class="text-sm text-slate-600 mb-8 px-2">Comprehensive review of your current business
-                        trajectory.</p>
-                    <button
-                        class="mt-auto flex items-center gap-2 border border-slate-800 px-4 py-1.5 rounded-full text-xs font-bold hover:bg-slate-100 transition-colors uppercase tracking-wider">
-                        Book Now <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                    </button>
-                </div>
-                <div
-                    class="border-2 border-slate-800 rounded-[2rem] p-6 flex flex-col items-center text-center animate-on-scroll slide-up stagger-2 hover:shadow-lg transition-shadow">
-                    <h3 class="text-lg font-bold mb-6">Culture Design</h3>
-                    <div class="w-32 h-32 border-2 border-slate-800 diamond-clip mb-6 p-1 animate-on-scroll scale-up">
-                        <img class="w-full h-full object-cover diamond-clip"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZO-uuMD1qdoWs_vyf5C7P60b1hfoeXCCBujz7KlvLRSEnfLLJwRYPAaDO4urJIb1A2w_7Vd0S49Jq1VZWlzOWsIZpNtjZPgHH8Zi7Ldo3hrGqCnl0Cvw6sofezTjj2OPLBvosiEF0sAekH_jVVUzKjMSMksUHyG4b4xZXG0E8qaltgRMzPNTg2wi_gqXflAVFRmdgAWWRYcOro3zue9sRJRctLRY0qlp8VsYyt3xYP9sYt_7zLoMnNQLYt5uU9X9o-Sm0Y-HgakKV" />
-                    </div>
-                    <p class="text-sm text-slate-600 mb-8 px-2">Build a high-performance culture that attracts top
-                        talent.</p>
-                    <button
-                        class="mt-auto flex items-center gap-2 border border-slate-800 px-4 py-1.5 rounded-full text-xs font-bold hover:bg-slate-100 transition-colors uppercase tracking-wider">
-                        Book Now <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                    </button>
-                </div>
-                <div
-                    class="border-2 border-slate-800 rounded-[2rem] p-6 flex flex-col items-center text-center animate-on-scroll slide-up stagger-3 hover:shadow-lg transition-shadow">
-                    <h3 class="text-lg font-bold mb-6">Skill Mapping</h3>
-                    <div class="w-32 h-32 border-2 border-slate-800 diamond-clip mb-6 p-1 animate-on-scroll scale-up">
-                        <img class="w-full h-full object-cover diamond-clip"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbPIFdGU0TxWKzVOLAWwsysbFZPc1NaxBosqLLiSyaOGC1pz_eGhPkQ9PmcRp6oaK_Z9JN0NkzQKo-24nzev4ik9Ew1-Co0DySZtYUWBOSe6y9aUkbwLTgmsyFuXMrOMKzpXsnNTWUMz5Wnm-KmjlpIhqMEWb9Z5jA1ZPSSa6gttTrfLhfxZkdH1ntNoJ-W_kpNWPIMmVwn5OwPViuitgjWkRCr74PJfEJVlouJS751NrLzsocRy-eN9No6uzKYjn6gB_BtBXkSQS7" />
-                    </div>
-                    <p class="text-sm text-slate-600 mb-8 px-2">Identify and close capability gaps across your
-                        organization.</p>
-                    <button
-                        class="mt-auto flex items-center gap-2 border border-slate-800 px-4 py-1.5 rounded-full text-xs font-bold hover:bg-slate-100 transition-colors uppercase tracking-wider">
-                        Book Now <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                    </button>
-                </div>
-                <div
-                    class="border-2 border-slate-800 rounded-[2rem] p-6 flex flex-col items-center text-center animate-on-scroll slide-up stagger-4 hover:shadow-lg transition-shadow">
-                    <h3 class="text-lg font-bold mb-6">Growth Hack</h3>
-                    <div class="w-32 h-32 border-2 border-slate-800 diamond-clip mb-6 p-1 animate-on-scroll scale-up">
-                        <img class="w-full h-full object-cover diamond-clip"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAg4hTd89SAco9vX0OOMgMOp8EhIv2S29eHmSVZgNhp5F1rjCbLtgsB9A1dgfugGZq4E5VkGW9mKot0WSoMAq3CjiiMVzB08e5MgCt3_GAhvkwMdIEx3tuMhDPct2_KOg3s4Y9FEbe1AnKXiJrBOliKjoENweoyIufonUfmzGmmu3uQNcEjUwQJKLZ_wbCXmLzt8XDyxivxBM3d6kzrLhAQIDfv25XeCOqm0FgdT7XwNWDwAlzqyAny6ufostL1YXwNb_Az3D5wPB4J" />
-                    </div>
-                    <p class="text-sm text-slate-600 mb-8 px-2">Rapid execution strategies for scaling small to mid-size
-                        ventures.</p>
-                    <button
-                        class="mt-auto flex items-center gap-2 border border-slate-800 px-4 py-1.5 rounded-full text-xs font-bold hover:bg-slate-100 transition-colors uppercase tracking-wider">
-                        Book Now <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                    </button>
-                </div>
+            <div class="services-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             </div>
         </div>
     </section>
     <section class="py-20 bg-slate-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl font-bold text-[var(--primary-blue)] mb-12 text-center">Why Choose Empoweredgeclub</h2>
+            <h2 class="text-4xl font-bold text-[var(--primary-blue)] mb-12 text-center">Why  Empoweredgeclub</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="bg-white p-8 rounded-lg shadow-sm border border-slate-200">
                     <span class="material-symbols-outlined text-[var(--primary-blue)] text-4xl mb-4">people</span>
@@ -530,26 +420,14 @@
         </div>
     </footer>
 
-    <script>
-        // Intersection Observer for scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver(function (entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.animate-on-scroll').forEach(element => {
-            observer.observe(element);
-        });
-    </script>
+    <script src="../scripts/utils.js"></script>
+    <script src="../scripts/api.js"></script>
+    <script src="../scripts/auth.js"></script>
+    <script src="../scripts/data.js"></script>
+    <script src="../scripts/modal.js"></script>
+    <script src="../scripts/toast.js"></script>
+    <script src="../scripts/app.js"></script>
+    <script src="../scripts/home.js"></script>
 </body>
 
 </html>

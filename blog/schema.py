@@ -75,6 +75,7 @@ class ProgramResponse(BaseModel):
 class ServiceCreate(BaseModel):
     name:str
     description:str
+    
     price:float
 
     class Config:
@@ -83,6 +84,7 @@ class ServiceCreate(BaseModel):
 class Service(BaseModel):
     id:int
     name:str
+   
     description:str
     price:float
     
