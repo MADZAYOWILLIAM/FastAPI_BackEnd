@@ -1,0 +1,21 @@
+:root {
+  --primary-color: #3b82f6;
+  --secondary-color: #64748b;
+  --accent-color: #10b981;
+  --background-color: #ffffff;
+  --text-color: #1f2937;
+  --error-color: #ef4444;
+  --success-color: #22c55e;
+  --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+  --border-radius: 8px;
+  --transition-speed: 0.3s;
+}
+
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-main);
+  background-color: var(--background-color);
+  color: var(--text-color);
+}

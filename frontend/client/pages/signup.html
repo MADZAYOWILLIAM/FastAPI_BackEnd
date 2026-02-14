@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Sign Up - Empoweredgeclub</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <style type="text/tailwindcss">
+        :root {
+            --primary-blue: #2563eb;
+            --primary-green: #22c55e;
+            --text-dark: #1e293b;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+        }
+    </style>
+</head>
+
+<body class="bg-white">
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-sm border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="index.html" class="flex items-center gap-2">
+                    <img src="../resources/WhatsApp_Image_2026-01-11_at_21.31.54-removebg-preview.png" alt="Logo" class="w-10 h-10">
+                    <div>
+                        <span class="text-xl font-bold text-slate-900 block leading-none">Empoweredgeclub</span>
+                        <span class="text-sm text-[var(--primary-green)] font-medium">make it happen</span>
+                    </div>
+                </a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a class="text-slate-600 hover:text-[var(--primary-blue)] font-medium" href="index.html">Home</a>
+                    <a class="text-slate-600 hover:text-[var(--primary-blue)] font-medium" href="about.html">About Us</a>
+                    <a class="text-slate-600 hover:text-[var(--primary-blue)] font-medium" href="program.html">Programs</a>
+                    <a class="text-slate-600 hover:text-[var(--primary-blue)] font-medium" href="service.html">Services</a>
+                    <a class="text-slate-600 hover:text-[var(--primary-blue)] font-medium" href="news.html">News&amp;Updates</a>
+                </div>
+                <a href="login.html"
+                    class="bg-white border border-[var(--primary-blue)] text-[var(--primary-blue)] px-6 py-2 rounded-md hover:bg-[var(--primary-blue)] hover:text-white transition-colors font-medium">
+                    Login
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-white py-12 px-4 sm:px-6 lg:px-8">
+        <div class="w-full max-w-md">
+            <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-200">
+                <h1 class="text-3xl font-bold text-[var(--primary-blue)] text-center mb-2">Create Your Account</h1>
+                <p class="text-slate-600 text-center mb-8">Join thousands of professionals on their growth journey</p>
+
+                <form class="space-y-5">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">First Name</label>
+                            <input
+                                type="text"
+                                placeholder="John"
+                                class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-transparent"
+                                required />
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">Last Name</label>
+                            <input
+                                type="text"
+                                placeholder="Doe"
+                                class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-transparent"
+                                required />
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-700 mb-2">Email Address</label>
+                        <input
+                            type="email"
+                            placeholder="you@example.com"
+                            class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-transparent"
+                            required />
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-700 mb-2">Phone Number</label>
+                        <input
+                            type="tel"
+                            placeholder="+1 (555) 000-0000"
+                            class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-transparent"
+                            required />
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-700 mb-2">Password</label>
+                        <input
+                            type="password"
+                            placeholder="Create a strong password"
+                            class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-transparent"
+                            required />
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-700 mb-2">Confirm Password</label>
+                        <input
+                            type="password"
+                            placeholder="Re-enter your password"
+                            class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-transparent"
+                            required />
+                    </div>
+
+                    <label class="flex items-start gap-3">
+                        <input type="checkbox" class="mt-1" required />
+                        <span class="text-sm text-slate-600">
+                            I agree to the
+                            <a href="#" class="text-[var(--primary-blue)] hover:underline">Terms &amp; Conditions</a>
+                            and
+                            <a href="#" class="text-[var(--primary-blue)] hover:underline">Privacy Policy</a>
+                        </span>
+                    </label>
+
+                    <button
+                        type="submit"
+                        class="w-full bg-[var(--primary-blue)] text-white font-bold py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                        Create Account
+                    </button>
+                </form>
+
+                <div class="mt-8">
+                    <p class="text-center text-slate-600">
+                        Already have an account?
+                        <a href="login.html" class="text-[var(--primary-blue)] font-bold hover:underline">Sign in</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="pt-20 pb-12 bg-white border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
+                <div class="lg:col-span-1">
+                    <a href="index.html" class="flex items-center gap-2 mb-4">
+                        <img src="../resources/WhatsApp_Image_2026-01-11_at_21.31.54-removebg-preview.png" alt="Logo" class="w-10 h-10">
+                        <div>
+                            <span class="text-lg font-bold text-slate-900 block leading-none">Empoweredgeclub</span>
+                            <span class="text-xs text-[var(--primary-green)] font-medium">make it happen</span>
+                        </div>
+                    </a>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-6 inline-block border-b-2 border-slate-800">Quick Links</h4>
+                    <ul class="space-y-3 text-sm text-slate-600">
+                        <li><a class="hover:text-[var(--primary-blue)]" href="index.html">Home</a></li>
+                        <li><a class="hover:text-[var(--primary-blue)]" href="about.html">About</a></li>
+                        <li><a class="hover:text-[var(--primary-blue)]" href="program.html">Programs</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-6 inline-block border-b-2 border-slate-800">Contact</h4>
+                    <ul class="space-y-3 text-sm text-slate-600">
+                        <li>0712345679</li>
+                        <li>empoweredge@gmail.com</li>
+                    </ul>
+                </div>
+                <div class="lg:col-span-2">
+                    <h4 class="text-lg font-bold mb-6 inline-block border-b-2 border-slate-800">Legal</h4>
+                    <ul class="space-y-3 text-sm text-slate-600">
+                        <li><a class="hover:text-[var(--primary-blue)]" href="#">Terms &amp; Conditions</a></li>
+                        <li><a class="hover:text-[var(--primary-blue)]" href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

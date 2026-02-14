@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Empoweredgeclub - Professional Coaching &amp; Development</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <style type="text/tailwindcss">
+        :root {
+            --primary-blue: #2563eb;
+            --primary-green: #22c55e;
+            --text-dark: #1e293b;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+        }
+        .diamond-clip {
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+        }
+        .wavy-border {
+            border-top: 2px solid #e2e8f0;
+            border-radius: 50% / 20px;
+            border-bottom: none;
+            border-left: none;
+            border-right: none;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        @keyframes scaleUp {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        .animate-on-scroll {
+            opacity: 0;
+        }
+        .animate-on-scroll.visible {
+            animation-fill-mode: both;
+            animation-duration: 0.8s;
+            animation-timing-function: cubic-bezier(0.33, 0.66, 0.66, 1);
+        }
+        .fade-in.visible {
+            animation-name: fadeIn;
+        }
+        .slide-up.visible {
+            animation-name: slideUp;
+        }
+        .slide-in-left.visible {
+            animation-name: slideInLeft;
+        }
+        .slide-in-right.visible {
+            animation-name: slideInRight;
+        }
+        .scale-up.visible {
+            animation-name: scaleUp;
+        }
+        .stagger-1.visible { animation-delay: 0.1s; }
+        .stagger-2.visible { animation-delay: 0.2s; }
+        .stagger-3.visible { animation-delay: 0.3s; }
+        .stagger-4.visible { animation-delay: 0.4s; }
+    </style>
+</head>
+
+<body class="bg-white">
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-sm border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="index.html" class="flex items-center gap-2">
+                    <img src="../resources/WhatsApp_Image_2026-01-11_at_21.31.54-removebg-preview.png" alt="Logo"
+                        class="w-10 h-10">
+                    <div>
+                        <span class="text-xl font-bold text-slate-900 block leading-none">Empoweredgeclub</span>
+                        <span class="text-sm text-[var(--primary-green)] font-medium">make it happen</span>
+                    </div>
+                </a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a class="text-slate-600 hover:text-[var(--primary-blue)] font-medium border-b-2 border-[var(--primary-blue)] pb-1"
+                        href="index.html">Home</a>
+                    <a class="text-slate-600 hover:text-[var(--primary-blue)] font-medium" href="about.html">About
+                        Us</a>
+                    <a class="text-slate-600 hover:text-[var(--primary-blue)] font-medium"
+                        href="program.html">Programs</a>
+                    <a class="text-slate-600 hover:text-[var(--primary-blue)] font-medium"
+                        href="service.html">Services</a>
+                    <a class="text-slate-600 hover:text-[var(--primary-blue)] font-medium"
+                        href="news.html">News&amp;Updates</a>
+                </div>
+                <a href="signup.html"
+                    class="bg-white border border-[var(--primary-blue)] text-[var(--primary-blue)] px-6 py-2 rounded-md hover:bg-[var(--primary-blue)] hover:text-white transition-colors font-medium inline-block">
+                    Get Started
+                </a>
+            </div>
+        </div>
+    </nav>
+    <header class="relative overflow-hidden pt-16 pb-24 lg:pt-32 lg:pb-40">
+        <div class="absolute inset-0 -z-10">
+            <video autoplay loop muted playsinline class="w-full h-full object-cover"
+                style="object-position: center 12%; transform: scale(1.15); transform-origin: center top;">
+                <source src="../resources/backgroud.mp4" type="video/mp4">
+                <!-- Fallback text for browsers that don't support <video> -->
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-12 lg:gap-12 items-center">
+                <div class="lg:col-span-6">
+                    <p class="text-xl md:text-2xl text-slate-700 leading-relaxed mb-10 max-w-xl">
+                        Empowering Youth for a Better Future
+                        Join our community to access training programs, news designed to help you succeed.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="signup.html"
+                            class="px-8 py-3 bg-white border-2 border-slate-900 text-slate-900 rounded-lg font-bold hover:bg-slate-900 hover:text-white hover:shadow-lg transform hover:scale-105 transition-all duration-300">Get
+                            Started</a>
+                        <a href="about.html"
+                            class="px-8 py-3 bg-white border-2 border-slate-900 text-slate-900 rounded-lg font-bold hover:bg-[var(--primary-blue)] hover:border-[var(--primary-blue)] hover:text-white hover:shadow-lg transform hover:scale-105 transition-all duration-300">Learn
+                            More</a>
+                    </div>
+                </div>
+                <div class="lg:col-span-6 mt-16 lg:mt-0 relative h-[500px] flex items-center justify-center">
+                    <div class="absolute w-64 h-64 border-4 border-[var(--primary-blue)] diamond-clip p-2">
+                        <img alt="Teamwork" class="w-full h-full object-cover diamond-clip"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyy5XtmbSkCs6bONPmQLLwpnDPpLsgt6wxVcSxV6hxJJFjvRjHxXTlCNRuh4aUTzqEfLicD4689GsP9vMJjxZ3snWQ9GUTeyAnnm21Acwz8gkqklCTBGNylkSW6-ECci2ycWWPSFRaT6wnbeRVS0ulc6-wZPcAcWkrXG7BnoCNnVX7GK_4XwftowAJGZvBzLO96RBPzM1cXwESGeeKkJSKTsrzPqA2usJsCLgKUzpXl5sEJfw_fbQk1YLNIbNM38Su9INdmdJ6QYxV" />
+                    </div>
+                    <div
+                        class="absolute -translate-x-32 -translate-y-32 w-28 h-28 border-2 border-slate-900 diamond-clip p-1">
+                        <img alt="Meeting" class="w-full h-full object-cover diamond-clip"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCX4Aez5DQD7AZmBPcjVruVJXXdq9L3T36i17Y63kZJLhe59K560kskGK3Y6aCvHaZPUmDazYDEj3G1M814ARZaXvJDdYPpyfBynzqOpBV9cUGSwpnT8Ofv7oIMGnY9fd12gLQcsFADzwxuXbQFsCkWKtrjBhwGpu--kW2qyhPfApmsNcU5hnj6LZzqY7w-miu6c1zsATv5bYfqrRxP2C2FIrrZG7rF2xMquB1V4ZYODhcBBTV4DNSEyRgyZn6R5MjBTklmK_GEjf1b" />
+                    </div>
+                    <div
+                        class="absolute translate-x-32 -translate-y-32 w-28 h-28 border-2 border-slate-900 diamond-clip p-1">
+                        <img alt="Strategy" class="w-full h-full object-cover diamond-clip"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-yqGg3IdrmVzayDK0IGCuOzgsVGsL-XE1KDd1D-DwqUEUO6XQz6YXLDIiETUKBIJJ5Z6_hCtY4uuAyBATIWT_d6H-M4pKl21xdnK57uOnwV_zCxhZbloRe6uRCCXU8Iwajk35RVtDsuO3CzXf2jPiGsCY3iDHpwQD3VdzdFv0lEsEr96APfW_lw93Wi6Q612qLg77a0ucAYE9Id6JisfEV_RtFz_r-vbIp8W1DQlA-tCe-DNHMsvC4gkhXPLIHLjsd3_WyL3uxOjT" />
+                    </div>
+                    <div
+                        class="absolute -translate-x-32 translate-y-32 w-28 h-28 border-2 border-slate-900 diamond-clip p-1">
+                        <img alt="Growth" class="w-full h-full object-cover diamond-clip"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBI3Dnws51Yjw5UyAFnohsYnyhNYj72FE1c132G7F8HX2ZT8dvZlY8EpXTvyHrxlqod4hNtU5nqEGW1cozBvT_ZFyIqHN1asaWj60lGJt9ao-j-__6xiFrnfjfxXZfyNJL25T5ila2XfrLjDTMIoG4s0H5gK0x4-MfdPz0aIb2MPmz65kxe9Eljg-e_8SN--vpOc4V8oq7dwLlcIB8VCgBxYlvp1vNhnv8Lc9WlJUPn89qZe_Vy6iwqhazSQPzKoAG3eMeNKRntw2ay" />
+                    </div>
+                    <div
+                        class="absolute translate-x-32 translate-y-32 w-28 h-28 border-2 border-slate-900 diamond-clip p-1">
+                        <img alt="Tech" class="w-full h-full object-cover diamond-clip"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDO3NXSadQxp-zMyfG7RKnpqaT1dqAQObIbcoEtNlwR1WhTEX0UNW6sOVb283EJpeTOuOLernVp1SS4rq1nBzlUz4FgPoXqR0bVpTmp_FiiiKCrygWxfvUD1x1Jj7oHB77fCqjpnmLQPToj5TFosoaU9JYPPIYD1PGyS8KZbxDR7sRFOYDuntNnxzxP5d82o4TjLe53Cx_lAfyLHa71vRT83ik6Bk0VjHfSYCTvKxg6En9g43PlyHcgMbN2AHjDfozRaFqyGo84ueQo" />
+                    </div>
+                    <div class="absolute translate-x-48 w-24 h-24 border-2 border-slate-900 diamond-clip p-1">
+                        <img alt="Laptop" class="w-full h-full object-cover diamond-clip"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1UTaf7FCeWIRPuT9jtCo6-KeERHjSb4anm_yeKBjndBGHhbaxSgzAzt-QG8ILoP-OPS6b9m61-m6X74YC8AsGLHrEAf1tUMRMDE0CbTOtQ_h13lWeFvVVL79DqZo8lC0Xl1FjNkDtVdcNtXu6h7RPU7nWN8r4QrSIFYRsWioFkrlHNb9-AtibTZwSsomCZl7W3BhC0Pjyf2yLiGyuD6cCjnxiquU5Uv4XaReJJtVKJ5JLqwDPif61dHFq2xdSkoNGx_0zW8fa4cO5" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2
+                    class="text-3xl font-bold text-[var(--primary-blue)] inline-block border-b-4 border-slate-800 pb-2 animate-on-scroll slide-up">
+                    Our Programs</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div
+                    class="border-2 border-slate-800 rounded-[2rem] p-6 flex flex-col items-center text-center animate-on-scroll slide-up stagger-1 hover:shadow-lg transition-shadow">
+                    <h3 class="text-lg font-bold mb-6">Leadership Mastery</h3>
+                    <div class="w-32 h-32 border-2 border-slate-800 diamond-clip mb-6 p-1 animate-on-scroll scale-up">
+                        <img class="w-full h-full object-cover diamond-clip"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZ_aRbVSvw_BauzlgSea8OfeqD11u5priFC2yX6NniI-WFeG6ln3zCEGt-AJCDkK0JqZt479ESeLBTxmyLCySK4oVtdrIqtsHzjBeYeJ3pKcdi0RbnpR5YsxR4zN8tq0k9TM3wDQADdBuUsg30Zb1sFlguw8F0nKdYr5VbQQQvxSMgmG3qE9qjyEjN_f4QBtfxwXHU-Zau0dt4V85LRoeoxb2NFdMUP2zsddwhtNsXiEgA_ELgPJSCGC8sykUttGFc4eswTOevG7VU" />
+                    </div>
+                    <p class="text-sm text-slate-600 mb-8 px-2">Structured development path for emerging leaders seeking
+                        to scale their impact.</p>
+                    <button
+                        class="mt-auto flex items-center gap-2 border border-slate-800 px-4 py-1.5 rounded-full text-xs font-bold hover:bg-slate-100 transition-colors uppercase tracking-wider">
+                        See More <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </button>
+                </div>
+                <div
+                    class="border-2 border-slate-800 rounded-[2rem] p-6 flex flex-col items-center text-center animate-on-scroll slide-up stagger-2 hover:shadow-lg transition-shadow">
+                    <h3 class="text-lg font-bold mb-6">Exec Coaching</h3>
+                    <div class="w-32 h-32 border-2 border-slate-800 diamond-clip mb-6 p-1 animate-on-scroll scale-up">
+                        <img class="w-full h-full object-cover diamond-clip"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVFZKllsWQH1EfLmmQMSF0Db8LzcTTr1lj38Bhf4fQlDTo-wh6OdjA7n1hjMaXLVoXY_gFNXqcWAIHhGZh0zssXn2AvHwCZG41AP2c8vDAtIIhHxZYH4aL3gHrCBGnWSSVoTOVbEEXJ-IssH58DOZXoRKWeIb0sNV2t7YHQHoPhGyVVsV4tTRBH98QGZFDcLqVaK981mfQ04E9ECxrc1CS-5D1tP09GtAP2ATR_DdwARQrmL2TTWk94fIdPH3P_Hls3pr7MkAakIwI" />
+                    </div>
+                    <p class="text-sm text-slate-600 mb-8 px-2">Personalized one-on-one sessions with industry veterans.
+                    </p>
+                    <button
+                        class="mt-auto flex items-center gap-2 border border-slate-800 px-4 py-1.5 rounded-full text-xs font-bold hover:bg-slate-100 transition-colors uppercase tracking-wider">
+                        See More <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </button>
+                </div>
+                <div
+                    class="border-2 border-slate-800 rounded-[2rem] p-6 flex flex-col items-center text-center animate-on-scroll slide-up stagger-3 hover:shadow-lg transition-shadow">
+                    <h3 class="text-lg font-bold mb-6">Team Synergy</h3>
+                    <div class="w-32 h-32 border-2 border-slate-800 diamond-clip mb-6 p-1 animate-on-scroll scale-up">
+                        <img class="w-full h-full object-cover diamond-clip"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDvAc8FWNb4EDnhnp5jH4E0DcGMKzjFzIwWFXtuBP-S6YV30VdZftyzgUtLQYjr4wLcSJiG-0jnUFi8Tka1uSagxzzwSgnxSImUoOGpf3HODeFA6ZjqpsAX9wSeaWDwSYThom3CvBHPzwCyEui5wxKMIrU6I22-5Ih1MZKD8fFwutdSpbVJ_oKZup6DfX3DRUEddsQXgRFu0MSfCkGNwM6tsNFOP5CO3wo6D8_fKMbT9yrX5OQFWh6TwZMpBihUg2Y4fsIYQStA4nU" />
+                    </div>
+                    <p class="text-sm text-slate-600 mb-8 px-2">Workshops designed to unify distributed teams and boost
+                        productivity.</p>
+                    <button
+                        class="mt-auto flex items-center gap-2 border border-slate-800 px-4 py-1.5 rounded-full text-xs font-bold hover:bg-slate-100 transition-colors uppercase tracking-wider">
+                        See More <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </button>
+                </div>
+                <div
+                    class="border-2 border-slate-800 rounded-[2rem] p-6 flex flex-col items-center text-center animate-on-scroll slide-up stagger-4 hover:shadow-lg transition-shadow">
+                    <h3 class="text-lg font-bold mb-6">Digital Pivot</h3>
+                    <div class="w-32 h-32 border-2 border-slate-800 diamond-clip mb-6 p-1 animate-on-scroll scale-up">
+                        <img class="w-full h-full object-cover diamond-clip"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuChrAMxx1xrKd3M5u0Ul0qOxpbPenYaXvsScEgsa5ULztsrOL-bUJApJAioRx66ysVNwE6aQIRPXJWOyy1eLdS5wJeI3DlZhaDkicroWFyMR2-ob71ILhR3-iP5NBo4PXyBkJusLNVnuNUEQfqh6UMZGg6nu2gTHYIHYIfIl5BP3aXJn43IyLGO2VIxzjI-CeFJplRV4yFZ0FY4rwKTFJngPDxGDqH_VuiQMmzraYMXb82lH-H3DmnIJqMjDfHLKuyuWWQkCNwftg0G" />
+                    </div>
+                    <p class="text-sm text-slate-600 mb-8 px-2">Navigate the complexities of organizational digital
+                        transformation.</p>
+                    <button
+                        class="mt-auto flex items-center gap-2 border border-slate-800 px-4 py-1.5 rounded-full text-xs font-bold hover:bg-slate-100 transition-colors uppercase tracking-wider">
+                        See More <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-20 bg-white border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2
+                    class="text-3xl font-bold text-[var(--primary-blue)] inline-block border-b-4 border-slate-800 pb-2 animate-on-scroll slide-up">
+                    Our Services</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div
+                    class="border-2 border-slate-800 rounded-[2rem] p-6 flex flex-col items-center text-center animate-on-scroll slide-up stagger-1 hover:shadow-lg transition-shadow">
+                    <h3 class="text-lg font-bold mb-6">Strategy Audit</h3>
+                    <div class="w-32 h-32 border-2 border-slate-800 diamond-clip mb-6 p-1 animate-on-scroll scale-up">
+                        <img class="w-full h-full object-cover diamond-clip"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbqwSV465QZvDVRZTBFh2zyNUd8qrxXphrW9eu0hj02-XVLyO_UwaBCTFmTuH-qnKmMqAxngbbo-6eROqhl3OErSulUEZz-DrtrU5suD7YqZRxrVIrPtulM5NAwlFsJ1FsYwRHmU3LWEQxFaAF1daXF06c_l3M9dUFlkhUp6Bx6vEnPwZhZlwTrUE4Da_wsdpCG0MMCzYNiXbu8vUGfNsJPm95HuQKcD_nh2GSFAESfCkPGzGVPy6gpA9y09IhSxTyqDS8c9jf9h9-" />
+                    </div>
+                    <p class="text-sm text-slate-600 mb-8 px-2">Comprehensive review of your current business
+                        trajectory.</p>
+                    <button
+                        class="mt-auto flex items-center gap-2 border border-slate-800 px-4 py-1.5 rounded-full text-xs font-bold hover:bg-slate-100 transition-colors uppercase tracking-wider">
+                        Book Now <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </button>
+                </div>
+                <div
+                    class="border-2 border-slate-800 rounded-[2rem] p-6 flex flex-col items-center text-center animate-on-scroll slide-up stagger-2 hover:shadow-lg transition-shadow">
+                    <h3 class="text-lg font-bold mb-6">Culture Design</h3>
+                    <div class="w-32 h-32 border-2 border-slate-800 diamond-clip mb-6 p-1 animate-on-scroll scale-up">
+                        <img class="w-full h-full object-cover diamond-clip"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZO-uuMD1qdoWs_vyf5C7P60b1hfoeXCCBujz7KlvLRSEnfLLJwRYPAaDO4urJIb1A2w_7Vd0S49Jq1VZWlzOWsIZpNtjZPgHH8Zi7Ldo3hrGqCnl0Cvw6sofezTjj2OPLBvosiEF0sAekH_jVVUzKjMSMksUHyG4b4xZXG0E8qaltgRMzPNTg2wi_gqXflAVFRmdgAWWRYcOro3zue9sRJRctLRY0qlp8VsYyt3xYP9sYt_7zLoMnNQLYt5uU9X9o-Sm0Y-HgakKV" />
+                    </div>
+                    <p class="text-sm text-slate-600 mb-8 px-2">Build a high-performance culture that attracts top
+                        talent.</p>
+                    <button
+                        class="mt-auto flex items-center gap-2 border border-slate-800 px-4 py-1.5 rounded-full text-xs font-bold hover:bg-slate-100 transition-colors uppercase tracking-wider">
+                        Book Now <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </button>
+                </div>
+                <div
+                    class="border-2 border-slate-800 rounded-[2rem] p-6 flex flex-col items-center text-center animate-on-scroll slide-up stagger-3 hover:shadow-lg transition-shadow">
+                    <h3 class="text-lg font-bold mb-6">Skill Mapping</h3>
+                    <div class="w-32 h-32 border-2 border-slate-800 diamond-clip mb-6 p-1 animate-on-scroll scale-up">
+                        <img class="w-full h-full object-cover diamond-clip"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbPIFdGU0TxWKzVOLAWwsysbFZPc1NaxBosqLLiSyaOGC1pz_eGhPkQ9PmcRp6oaK_Z9JN0NkzQKo-24nzev4ik9Ew1-Co0DySZtYUWBOSe6y9aUkbwLTgmsyFuXMrOMKzpXsnNTWUMz5Wnm-KmjlpIhqMEWb9Z5jA1ZPSSa6gttTrfLhfxZkdH1ntNoJ-W_kpNWPIMmVwn5OwPViuitgjWkRCr74PJfEJVlouJS751NrLzsocRy-eN9No6uzKYjn6gB_BtBXkSQS7" />
+                    </div>
+                    <p class="text-sm text-slate-600 mb-8 px-2">Identify and close capability gaps across your
+                        organization.</p>
+                    <button
+                        class="mt-auto flex items-center gap-2 border border-slate-800 px-4 py-1.5 rounded-full text-xs font-bold hover:bg-slate-100 transition-colors uppercase tracking-wider">
+                        Book Now <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </button>
+                </div>
+                <div
+                    class="border-2 border-slate-800 rounded-[2rem] p-6 flex flex-col items-center text-center animate-on-scroll slide-up stagger-4 hover:shadow-lg transition-shadow">
+                    <h3 class="text-lg font-bold mb-6">Growth Hack</h3>
+                    <div class="w-32 h-32 border-2 border-slate-800 diamond-clip mb-6 p-1 animate-on-scroll scale-up">
+                        <img class="w-full h-full object-cover diamond-clip"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAg4hTd89SAco9vX0OOMgMOp8EhIv2S29eHmSVZgNhp5F1rjCbLtgsB9A1dgfugGZq4E5VkGW9mKot0WSoMAq3CjiiMVzB08e5MgCt3_GAhvkwMdIEx3tuMhDPct2_KOg3s4Y9FEbe1AnKXiJrBOliKjoENweoyIufonUfmzGmmu3uQNcEjUwQJKLZ_wbCXmLzt8XDyxivxBM3d6kzrLhAQIDfv25XeCOqm0FgdT7XwNWDwAlzqyAny6ufostL1YXwNb_Az3D5wPB4J" />
+                    </div>
+                    <p class="text-sm text-slate-600 mb-8 px-2">Rapid execution strategies for scaling small to mid-size
+                        ventures.</p>
+                    <button
+                        class="mt-auto flex items-center gap-2 border border-slate-800 px-4 py-1.5 rounded-full text-xs font-bold hover:bg-slate-100 transition-colors uppercase tracking-wider">
+                        Book Now <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-[var(--primary-blue)] mb-12 text-center">Why Choose Empoweredgeclub</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-sm border border-slate-200">
+                    <span class="material-symbols-outlined text-[var(--primary-blue)] text-4xl mb-4">people</span>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4">Expert Coaches</h3>
+                    <p class="text-slate-600">Industry veterans with 15+ years of combined experience in leadership and
+                        organizational development. Our coaches have worked across Fortune 500 companies and startups.
+                    </p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-sm border border-slate-200">
+                    <span class="material-symbols-outlined text-[var(--primary-blue)] text-4xl mb-4">trending_up</span>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4">Proven Results</h3>
+                    <p class="text-slate-600">500+ professionals coached with 98% client satisfaction. Our programs
+                        deliver measurable organizational impact including improved retention, productivity, and revenue
+                        growth.</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-sm border border-slate-200">
+                    <span class="material-symbols-outlined text-[var(--primary-blue)] text-4xl mb-4">tune</span>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4">Custom Solutions</h3>
+                    <p class="text-slate-600">Every organization is unique. We design tailored programs to address your
+                        specific challenges, culture, and goals with precision and flexibility.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-20 bg-slate-50 border-y border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h3 class="text-2xl font-bold text-slate-800 uppercase tracking-widest mb-2">Metrics</h3>
+                <div class="h-1 w-20 bg-[var(--primary-green)] mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <span class="material-symbols-outlined text-[var(--primary-blue)] text-4xl mb-4">groups</span>
+                    <p class="text-3xl font-bold text-slate-900">500+</p>
+                    <p class="text-sm font-medium text-slate-500 uppercase tracking-wide">Professionals Coached</p>
+                </div>
+                <div class="text-center">
+                    <span class="material-symbols-outlined text-[var(--primary-blue)] text-4xl mb-4">verified</span>
+                    <p class="text-3xl font-bold text-slate-900">98%</p>
+                    <p class="text-sm font-medium text-slate-500 uppercase tracking-wide">Client Satisfaction Rate</p>
+                </div>
+                <div class="text-center">
+                    <span
+                        class="material-symbols-outlined text-[var(--primary-blue)] text-4xl mb-4">corporate_fare</span>
+                    <p class="text-3xl font-bold text-slate-900">50+</p>
+                    <p class="text-sm font-medium text-slate-500 uppercase tracking-wide">Corporate Partners</p>
+                </div>
+                <div class="text-center">
+                    <span
+                        class="material-symbols-outlined text-[var(--primary-blue)] text-4xl mb-4">workspace_premium</span>
+                    <p class="text-3xl font-bold text-slate-900">15+</p>
+                    <p class="text-sm font-medium text-slate-500 uppercase tracking-wide">Years of Industry Excellence
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h3 class="text-2xl font-bold text-slate-800 uppercase tracking-widest mb-2">Testimonials</h3>
+                <div class="h-1 w-20 bg-[var(--primary-green)] mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div class="flex flex-col items-center">
+                    <div class="w-24 h-24 border-2 border-[var(--primary-blue)] diamond-clip p-1 mb-6">
+                        <img class="w-full h-full object-cover diamond-clip"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9taWGoqt4Y871kaypb_nxmCi4BPBf29Qi1rxYtNmY7rkyzk4a7Tf6D6lIzt_JEQvhN3KDp5Y433EYe31Ws_FkxSOCACBJyF6J5WYZ2-tAm5sO00yuCPU2DG-eheCDqyzLrQSp0W1n4X3rdjusGh1f_aLiCWdQpy-nrBPgwbbyZQPEzmqe8JRegwp0aYqhpyPkWJefim2VuJC8uyf-gHQXf_RGfSgVOfkHRz3rgLWPxN24wxVloMZNYnF8TKd9gFemLdn9Vv39cxgI" />
+                    </div>
+                    <div class="text-center">
+                        <p class="text-slate-600 italic mb-4">"The programs at Empoweredgeclub completely transformed my
+                            leadership approach. I feel more confident than ever."</p>
+                        <h4 class="font-bold text-slate-900">Sarah J.</h4>
+                        <p class="text-sm text-[var(--primary-blue)] font-medium">Senior Manager</p>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-24 h-24 border-2 border-[var(--primary-blue)] diamond-clip p-1 mb-6">
+                        <img class="w-full h-full object-cover diamond-clip"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbqf4YnR-dmZASMlWpNmhns2r3wVq-oUntY2IvAXxPmvloKIBoY_DiuACetbnfT3YAk9Kx3EDxPWnNyC37CV6IGaIdZG6wnW6XGCviXwbCkrZXKMVNbX0gcPveW42btLUcKh5UGNTv1kTuC9sGn-osIFXQWOdfZN3LA4JLaBhL2rcxEDYAKek8-uYA9k5KapKivmoLRe1tJyuze7OuJPOhGdMIgoAxyRHTzCqJxqjfwGkgbzLuVnv6mTjl1N92bUrvRGTCUF-DURbY" />
+                    </div>
+                    <div class="text-center">
+                        <p class="text-slate-600 italic mb-4">"Exceptional coaching that bridges the gap between theory
+                            and real-world execution. Truly a game-changer for our team."</p>
+                        <h4 class="font-bold text-slate-900">Michael R.</h4>
+                        <p class="text-sm text-[var(--primary-blue)] font-medium">COO, Tech Global</p>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-24 h-24 border-2 border-[var(--primary-blue)] diamond-clip p-1 mb-6">
+                        <img class="w-full h-full object-cover diamond-clip"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrHrNpprD8GfeNcC_gph-ZKoz2GhMhBsTJ-uPlE8GlEDFGVP7IKGpFQ99eqD9fJqR517yT81CYsudTwQ2Bx1W4GIh9iZIHPLz4OU7bS9dvN1LR12jebN-O7QYuQFnx4I4cC_n2Rl3ohjwBlfLgQz-DctdXiAZdzNxtkEQyA3FDR5vFMINhtojd91uzHhy3LtTHn3iw5TCcipZGb7yNM4xk4WpnX2RlbTDdUaepde1QoG9ZlD_HaIpgUURTRrj5cGXwrxmPwxR4xAwi" />
+                    </div>
+                    <div class="text-center">
+                        <p class="text-slate-600 italic mb-4">"Working with Empoweredgeclub allowed us to reshape our
+                            company culture and see immediate productivity gains."</p>
+                        <h4 class="font-bold text-slate-900">Elena G.</h4>
+                        <p class="text-sm text-[var(--primary-blue)] font-medium">Founder &amp; CEO</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-20 bg-slate-50">
+        <div class="max-w-3xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h3 class="text-2xl font-bold text-slate-800 uppercase tracking-widest mb-2">Get in Touch</h3>
+                <div class="h-1 w-20 bg-[var(--primary-green)] mx-auto"></div>
+            </div>
+            <form class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-slate-200 space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-700 mb-2">Name</label>
+                        <input
+                            class="w-full px-4 py-3 rounded-lg border-slate-300 focus:ring-[var(--primary-blue)] focus:border-[var(--primary-blue)]"
+                            placeholder="John Doe" type="text" />
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-700 mb-2">Email</label>
+                        <input
+                            class="w-full px-4 py-3 rounded-lg border-slate-300 focus:ring-[var(--primary-blue)] focus:border-[var(--primary-blue)]"
+                            placeholder="john@example.com" type="email" />
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-2">Message</label>
+                    <textarea
+                        class="w-full px-4 py-3 rounded-lg border-slate-300 focus:ring-[var(--primary-blue)] focus:border-[var(--primary-blue)]"
+                        placeholder="How can we help you?" rows="4"></textarea>
+                </div>
+                <button
+                    class="w-full bg-[var(--primary-blue)] text-white font-bold py-4 rounded-lg hover:bg-blue-700 transition-colors uppercase tracking-widest">
+                    Send Message
+                </button>
+            </form>
+        </div>
+    </section>
+    <footer class="pt-20 pb-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="wavy-border mb-16 h-8"></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
+                <div class="lg:col-span-1">
+                    <a href="index.html" class="flex items-center gap-2 mb-4">
+                        <img src="../resources/WhatsApp_Image_2026-01-11_at_21.31.54-removebg-preview.png" alt="Logo"
+                            class="w-10 h-10">
+
+                        <div>
+                            <span class="text-lg font-bold text-slate-900 block leading-none">Empoweredgeclub</span>
+                            <span class="text-xs text-[var(--primary-green)] font-medium">make it happen</span>
+                        </div>
+                    </a>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Empowering youth through structured programs and community engagement. Join us to build a better
+                        future
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-6 inline-block border-b-2 border-slate-800">Site Map</h4>
+                    <ul class="space-y-3 text-sm text-slate-600">
+                        <li><a class="hover:text-[var(--primary-blue)]" href="#">Home</a></li>
+                        <li><a class="hover:text-[var(--primary-blue)]" href="#">About</a></li>
+                        <li><a class="hover:text-[var(--primary-blue)]" href="#">Programs</a></li>
+                        <li><a class="hover:text-[var(--primary-blue)]" href="#">Services</a></li>
+                        <li><a class="hover:text-[var(--primary-blue)]" href="#">News</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-6 inline-block border-b-2 border-slate-800">Contact Us</h4>
+                    <ul class="space-y-3 text-sm text-slate-600">
+                        <li class="flex items-center gap-2">0712345679</li>
+                        <li class="flex items-center gap-2 overflow-hidden overflow-ellipsis">empoweredge@gmail.com</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-6 inline-block border-b-2 border-slate-800">Follow Us</h4>
+                    <ul class="space-y-3 text-sm text-slate-600">
+                        <li><a class="hover:text-[var(--primary-blue)]" href="#">Facebook</a></li>
+                        <li><a class="hover:text-[var(--primary-blue)]" href="#">Instagram</a></li>
+                        <li><a class="hover:text-[var(--primary-blue)]" href="#">X</a></li>
+                        <li><a class="hover:text-[var(--primary-blue)]" href="#">Youtube</a></li>
+                        <li><a class="hover:text-[var(--primary-blue)]" href="#">Tiktok</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-6 inline-block border-b-2 border-slate-800">More Links</h4>
+                    <ul class="space-y-3 text-sm text-slate-600">
+                        <li><a class="hover:text-[var(--primary-blue)]" href="#">Legal</a></li>
+                        <li><a class="hover:text-[var(--primary-blue)]" href="#">Terms &amp; Conditions</a></li>
+                        <li><a class="hover:text-[var(--primary-blue)]" href="#">Privacy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+
+</html>
