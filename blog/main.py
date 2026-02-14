@@ -1,5 +1,6 @@
 
 from fastapi import FastAPI, Request
+from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from . import models
 from .database import engine, SessionLocal
@@ -30,6 +31,8 @@ app.include_router(event.router)
 
 # Create tables
 models.Base.metadata.create_all(bind=engine)
+
+app.mount("/", StaticFiles(directory="frontend/client", html=True), name="static")
 
 
 
