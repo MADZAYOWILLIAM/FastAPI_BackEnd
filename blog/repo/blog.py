@@ -18,6 +18,7 @@ def create_blog(id,request: schema.Blog, db:Session):
     new_blog = models.Blog(
                 title=request.title,
                 body=request.body,
+                image_url=request.image_url,
                  owner=user
             )
 
@@ -48,7 +49,8 @@ def update_blog(id: int, request: schema.Blog, db: Session):
         raise HTTPException(status_code=404, detail="Blog not found")
     blog.update({
         'title': request.title,
-        'body': request.body
+        'body': request.body,
+        'image_url': request.image_url
     })
     db.commit()
     return 'Blog Updated Successfully'

@@ -10,6 +10,7 @@ class User(Base):
     name = Column(String)
     email = Column(String, unique=True)
     password = Column(String)
+    phone_number = Column(String, nullable=True)
 
     blogs = relationship("Blog", back_populates="owner")
 
@@ -20,6 +21,7 @@ class Blog(Base):
     id = Column(Integer, primary_key=True, index=True)
     title = Column(String)
     body = Column(String)
+    image_url = Column(String, nullable=True)
 
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
 
@@ -34,6 +36,7 @@ class Program(Base):
     description = Column(String)
     start_date = Column(String)
     end_date = Column(String)
+    image_url = Column(String, nullable=True)
 
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
 
@@ -57,3 +60,4 @@ class Service(Base):
     
     description = Column(String)
     price = Column(Float)
+    image_url = Column(String, nullable=True)

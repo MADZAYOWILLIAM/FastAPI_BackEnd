@@ -14,7 +14,8 @@ def create_service(request: schema.Service, db:Session):
     new_service = models.Service(
                 name=request.name,
                 description=request.description,
-                price=request.price
+                price=request.price,
+                image_url=request.image_url
             )
 
     db.add(new_service)
@@ -46,7 +47,8 @@ def update_service(id: int, request: schema.Service, db: Session):
     service.update({
         'name': request.name,
         'description': request.description,
-        'price': request.price
+        'price': request.price,
+        'image_url': request.image_url
     })
     db.commit()
     return 'Service Updated Successfully'

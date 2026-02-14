@@ -28,11 +28,11 @@ const API = (() => {
     const getHeaders = (customHeaders = {}) => {
         const headers = { ...defaultHeaders, ...customHeaders };
         const token = getToken();
-        
+
         if (token) {
             headers['Authorization'] = `Bearer ${token}`;
         }
-        
+
         return headers;
     };
 
@@ -52,7 +52,7 @@ const API = (() => {
 
         try {
             const response = await fetch(url, config);
-            
+
             // Handle authentication errors
             if (response.status === 401) {
                 clearToken();
@@ -119,7 +119,7 @@ const API = (() => {
     const upload = async (endpoint, file, fieldName = 'file', additionalData = {}) => {
         const url = `${baseURL}${endpoint}`;
         const formData = new FormData();
-        
+
         formData.append(fieldName, file);
         Object.entries(additionalData).forEach(([key, value]) => {
             formData.append(key, value);
@@ -127,7 +127,7 @@ const API = (() => {
 
         const headers = { ...defaultHeaders };
         delete headers['Content-Type']; // Let browser set it
-        
+
         const token = getToken();
         if (token) {
             headers['Authorization'] = `Bearer ${token}`;
@@ -169,8 +169,9 @@ const API = (() => {
             username: email,
             password: password
         }),
-        register: (name, email, password) => post('/register', {
+        register: (name, phone, email, password) => post('/register', {
             name,
+            phone_number: phone,
             email,
             password
         })

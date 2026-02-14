@@ -12,7 +12,7 @@ def create_user(request: schema.User, db: Session=Depends(database.get_db)):
     hashed_password = hash_password(request.password)
     
     new_user=models.User(name=request.name,
-        email=request.email,password=hashed_password)
+        email=request.email,password=hashed_password, phone_number=request.phone_number)
     db.add(new_user)
     db.commit()
     db.refresh(new_user)

@@ -12,6 +12,7 @@ def create_program(request:schema.Program, db:Session=Depends(get_db), current_u
         description=request.description,
         start_date=request.start_date,
         end_date=request.end_date,
+        image_url=request.image_url,
         user_id=current_user.id if current_user else None
     )
     db.add(new_program)

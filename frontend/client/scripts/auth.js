@@ -33,7 +33,7 @@ const Auth = (() => {
     const login = async (email, password) => {
         try {
             const result = await API.auth.login(email, password);
-            
+
             if (!result.success) {
                 return {
                     success: false,
@@ -42,10 +42,10 @@ const Auth = (() => {
             }
 
             const { access_token, token_type } = result.data;
-            
+
             // Store token
             API.setToken(access_token);
-            
+
             // Store user info (email from login)
             setCurrentUser({
                 email: email,
@@ -67,10 +67,10 @@ const Auth = (() => {
     };
 
     // Handle register
-    const register = async (name, email, password) => {
+    const register = async (name, phone, email, password) => {
         try {
-            const result = await API.auth.register(name, email, password);
-            
+            const result = await API.auth.register(name, phone, email, password);
+
             if (!result.success) {
                 return {
                     success: false,

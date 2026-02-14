@@ -191,6 +191,7 @@
             const firstName = document.getElementById('firstName').value.trim();
             const lastName = document.getElementById('lastName').value.trim();
             const email = document.getElementById('signupEmail').value.trim();
+            const phone = document.getElementById('phone').value.trim();
             const password = document.getElementById('signupPassword').value;
             const confirmPassword = document.getElementById('confirmPassword').value;
             
@@ -212,7 +213,7 @@
             button.textContent = 'Creating Account...';
             
             try {
-                const result = await Auth.register(fullName, email, password);
+                const result = await Auth.register(fullName, phone, email, password);
                 if (result.success) {
                     Toast.success('Account created! Redirecting to login...');
                     setTimeout(() => {

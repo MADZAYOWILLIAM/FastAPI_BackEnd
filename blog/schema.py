@@ -6,6 +6,7 @@ class User(BaseModel):
     name: str
     email: str
     password: str
+    phone_number: str | None = None
     blogs: List['Blog'] = []
 
     class Config:
@@ -14,6 +15,7 @@ class UserResponse(BaseModel):
     id: int
     name: str
     email: str
+    phone_number: str | None = None
 
     class Config:
         from_attributes = True
@@ -22,12 +24,14 @@ class UserResponse(BaseModel):
 class Blog(BaseModel):
     title: str
     body: str
+    image_url: str | None = None
 
 
 class BlogResponse(BaseModel):
     id: int
     title: str
     body: str
+    image_url: str | None = None
     owner: UserResponse   # 👈 USER INCLUDED
 
     class Config:
@@ -55,6 +59,7 @@ class Program(BaseModel):
     description: str
     start_date: str
     end_date: str
+    image_url: str | None = None
 
     class Config:
         from_attributes = True
@@ -65,7 +70,9 @@ class ProgramResponse(BaseModel):
     name:str
     description:str
     start_date:str
+    start_date:str
     end_date:str
+    image_url: str | None = None
 
     class Config:
         from_attributes = True
@@ -76,7 +83,9 @@ class ServiceCreate(BaseModel):
     name:str
     description:str
     
+    
     price:float
+    image_url: str | None = None
 
     class Config:
         from_attributes = True
@@ -86,7 +95,9 @@ class Service(BaseModel):
     name:str
    
     description:str
+    description:str
     price:float
+    image_url: str | None = None
     
     class Config:
         from_attributes = True
@@ -94,7 +105,9 @@ class Service(BaseModel):
 class ServiceResponse(BaseModel):
     name:str
     description:str
+    description:str
     price:float
+    image_url: str | None = None
 
     class Config:
         from_attributes = True
