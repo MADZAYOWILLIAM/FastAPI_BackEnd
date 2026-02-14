@@ -16,8 +16,7 @@ I've configured your application for production deployment with load balancing. 
 
 #### Option 1: Test Gunicorn Locally (No PostgreSQL needed)
 ```bash
-cd /home/william/AI/BootCamp_Python
-./venv/bin/gunicorn -c gunicorn_config.py blog.main:app
+ExecStart=/home/william/AI/BootCamp_Python/blog-env/bin/gunicorn -c gunicorn_config.py blog.main:app
 ```
 This will run with SQLite but use multiple workers for better performance.
 

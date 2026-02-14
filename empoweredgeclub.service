@@ -15,14 +15,14 @@ Type=notify
 User=william
 Group=www-data
 WorkingDirectory=/home/william/AI/BootCamp_Python
-Environment="PATH=/home/william/AI/BootCamp_Python/venv/bin"
+Environment="PATH=/home/william/AI/BootCamp_Python/blog-env/bin"
 Environment="PYTHONPATH=/home/william/AI/BootCamp_Python"
 
 # Load environment variables from .env file
 EnvironmentFile=/home/william/AI/BootCamp_Python/.env
 
 # Start Gunicorn with config file
-ExecStart=/home/william/AI/BootCamp_Python/venv/bin/gunicorn -c gunicorn_config.py blog.main:app
+ExecStart=/home/william/AI/BootCamp_Python/blog-env/bin/gunicorn -c gunicorn_config.py blog.main:app
 
 # Reload gracefully
 ExecReload=/bin/kill -s HUP $MAINPID
