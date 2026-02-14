@@ -1,0 +1,46 @@
+# Systemd service file for Empoweredgeclub
+# Place this file in /etc/systemd/system/empoweredgeclub.service
+# Then run:
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable empoweredgeclub
+#   sudo systemctl start empoweredgeclub
+
+[Unit]
+Description=Empoweredgeclub FastAPI Application
+After=network.target postgresql.service
+Wants=postgresql.service
+
+[Service]
+Type=notify
+User=william
+Group=www-data
+WorkingDirectory=/home/william/AI/BootCamp_Python
+Environment="PATH=/home/william/AI/BootCamp_Python/venv/bin"
+Environment="PYTHONPATH=/home/william/AI/BootCamp_Python"
+
+# Load environment variables from .env file
+EnvironmentFile=/home/william/AI/BootCamp_Python/.env
+
+# Start Gunicorn with config file
+ExecStart=/home/william/AI/BootCamp_Python/venv/bin/gunicorn -c gunicorn_config.py blog.main:app
+
+# Reload gracefully
+ExecReload=/bin/kill -s HUP $MAINPID
+
+# Restart policy
+Restart=on-failure
+RestartSec=5s
+
+# Security
+KillMode=mixed
+TimeoutStopSec=5
+PrivateTmp=true
+NoNewPrivileges=true
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=empoweredgeclub
+
+[Install]
+WantedBy=multi-user.target

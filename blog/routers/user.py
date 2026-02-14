@@ -4,6 +4,7 @@ from .. import schema, database, models
 from typing import List
 from ..hashing import hash_password
 from  ..repo import user
+from .. import oauth
 get_db=database.get_db
 
 router=APIRouter(
@@ -32,9 +33,9 @@ def show(id,db:Session=Depends(get_db)):
 
 
 @router.delete('/{id}',status_code=status.HTTP_204_NO_CONTENT)
-def delete_user(id,db:Session=Depends(get_db)):
+def delete_user(id,db:Session=Depends(get_db), current_user: schema.UserResponse = Depends(oauth.get_current_user)):
    return user.delete_user(id,db)
 
 @router.put('/{id}',status_code=status.HTTP_202_ACCEPTED)
-def update_user(id,request:schema.User,db:Session=Depends(get_db)):
+def update_user(id,request:schema.User,db:Session=Depends(get_db), current_user: schema.UserResponse = Depends(oauth.get_current_user)):
     return user.update_user(id,request,db)

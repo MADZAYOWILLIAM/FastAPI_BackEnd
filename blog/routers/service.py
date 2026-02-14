@@ -28,11 +28,11 @@ def show(id,db:Session=Depends(get_db)):
 
 
 @router.delete('/{id}',status_code=status.HTTP_204_NO_CONTENT)
-def deleate_service(id,db:Session=Depends(get_db)):
+def deleate_service(id,db:Session=Depends(get_db), current_user: schema.UserResponse = Depends(oauth.get_current_user)):
    return service.delete_service(id,db)
 
 
 
 @router.put('/{id}',status_code=status.HTTP_202_ACCEPTED)
-def update_service(id,request:schema.Service,db:Session=Depends(get_db)):
+def update_service(id,request:schema.Service,db:Session=Depends(get_db), current_user: schema.UserResponse = Depends(oauth.get_current_user)):
     return service.update_service(id,request,db)

@@ -1,5 +1,6 @@
 
 from fastapi import FastAPI, Request
+from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from . import models
@@ -10,10 +11,14 @@ from .routers import blog, user,authentication,program,service,event
 
 app = FastAPI()
 
+@app.get("/")
+async def root():
+    return RedirectResponse(url="/pages/index.html")
+
 # Configure CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # In production, replace with specific origins
+    allow_origins=["*"],  # Allows all origins
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

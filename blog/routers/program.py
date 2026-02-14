@@ -27,9 +27,9 @@ def show(id,db:Session=Depends(get_db)):
 
 
 @router.delete('/{id}',status_code=status.HTTP_204_NO_CONTENT)
-def deleate_program(id,db:Session=Depends(get_db)):
+def deleate_program(id,db:Session=Depends(get_db), current_user: schema.UserResponse = Depends(oauth.get_current_user)):
    return program.delete_program(id,db)
 
 @router.put('/{id}',status_code=status.HTTP_202_ACCEPTED)
-def update_program(id,request:schema.Program,db:Session=Depends(get_db)):
+def update_program(id,request:schema.Program,db:Session=Depends(get_db), current_user: schema.UserResponse = Depends(oauth.get_current_user)):
     return program.update_program(id,request,db)

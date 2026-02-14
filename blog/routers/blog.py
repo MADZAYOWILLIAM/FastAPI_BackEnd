@@ -29,11 +29,11 @@ def show(id,response:Response,db:Session=Depends(get_db)):
     return blog.get_blog_by_id(id,db)
 
 @router.delete('/{id}',status_code=status.HTTP_204_NO_CONTENT)
-def delete_blog(id,db:Session=Depends(database.get_db)):
+def delete_blog(id,db:Session=Depends(database.get_db), current_user: schema.UserResponse = Depends(oauth.get_current_user)):
    return blog.delete_blog(id,db)
 
 
 @router.put('/{id}',status_code=status.HTTP_202_ACCEPTED,)
-def update(id,request:schema.Blog,db:Session=Depends(get_db)):
+def update(id,request:schema.Blog,db:Session=Depends(get_db), current_user: schema.UserResponse = Depends(oauth.get_current_user)):
    return blog.update_blog(id,request,db)
 

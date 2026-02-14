@@ -14,7 +14,7 @@ const ProgramPage = (() => {
     const loadPrograms = async () => {
         try {
             const result = await API.programs.getAll();
-            
+
             if (result.success) {
                 programs.length = 0;
                 programs.push(...result.data);
@@ -23,55 +23,25 @@ const ProgramPage = (() => {
             } else {
                 console.error('Failed to load programs:', result.error);
                 // Show static programs as fallback
-                loadStaticPrograms();
+                console.error('Failed to load programs:', result.error);
+                renderError();
             }
         } catch (error) {
             console.error('Error loading programs:', error);
-            loadStaticPrograms();
+            renderError();
         }
     };
 
-    // Load static programs (fallback)
-    const loadStaticPrograms = () => {
-        const staticPrograms = [
-            {
-                id: 1,
-                title: 'Leadership Mastery',
-                description: 'Develop essential leadership skills through our comprehensive program designed for emerging and experienced leaders.',
-                image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBZ_aRbVSvw_BauzlgSea8OfeqD11u5priFC2yX6NniI-WFeG6ln3zCEGt-AJCDkK0JqZt479ESeLBTxmyLCySK4oVtdrIqtsHzjBeYeJ3pKcdi0RbnpR5YsxR4zN8tq0k9TM3wDQADdBuUsg30Zb1sFlguw8F0nKdYr5VbQQQvxSMgmG3qE9qjyEjN_f4QBtfxwXHU-Zau0dt4V85LRoeoxb2NFdMUP2zsddwhtNsXiEgA_ELgPJSCGC8sykUttGFc4eswTOevG7VU',
-                category: 'leadership',
-                duration: '12 weeks',
-                features: ['12-week intensive program', 'Weekly 1-on-1 coaching', 'Peer mastermind groups']
-            },
-            {
-                id: 2,
-                title: 'Executive Coaching',
-                description: 'One-on-one personalized coaching tailored to your unique leadership challenges and organizational goals.',
-                image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDVFZKllsWQH1EfLmmQMSF0Db8LzcTTr1lj38Bhf4fQlDTo-wh6OdjA7n1hjMaXLVoXY_gFNXqcWAIHhGZh0zssXn2AvHwCZG41AP2c8vDAtIIhHxZYH4aL3gHrCBGnWSSVoTOVbEEXJ-IssH58DOZXoRKWeIb0sNV2t7YHQHoPhGyVVsV4tTRBH98QGZFDcLqVaK981mfQ04E9ECxrc1CS-5D1tP09GtAP2ATR_DdwARQrmL2TTWk94fIdPH3P_Hls3pr7MkAakIwI',
-                category: 'coaching',
-                features: ['Customized coaching plan', 'Monthly sessions', 'Progress assessments']
-            },
-            {
-                id: 3,
-                title: 'Team Synergy',
-                description: 'Strengthen team collaboration and productivity through interactive workshops and team-building experiences.',
-                image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBDvAc8FWNb4EDnhnp5jH4E0DcGMKzjFzIwWFXtuBP-S6YV30VdZftyzgUtLQYjr4wLcSJiG-0jnUFi8Tka1uSagxzzwSgnxSImUoOGpf3HODeFA6ZjqpsAX9wSeaWDwSYThom3CvBHPzwCyEui5wxKMIrU6I22-5Ih1MZKD8fFwutdSpbVJ_oKZup6DfX3DRUEddsQXgRFu0MSfCkGNwM6tsNFOP5CO3wo6D8_fKMbT9yrX5OQFWh6TwZMpBihUg2Y4fsIYQStA4nU',
-                category: 'team',
-                features: ['Interactive workshops', 'Team assessments', 'Action planning']
-            },
-            {
-                id: 4,
-                title: 'Digital Pivot',
-                description: 'Navigate digital transformation with confidence. Learn modern strategies for leading through organizational change.',
-                image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuChrAMxx1xrKd3M5u0Ul0qOxpbPenYaXvsScEgsa5ULztsrOL-bUJApJAioRx66ysVNwE6aQIRPXJWOyy1eLdS5wJeI3DlZhaDkicroWFyMR2-ob71ILhR3-iP5NBo4PXyBkJusLNVnuNUEQfqh6UMZGg6nu2gTHYIHYIfIl5BP3aXJn43IyLGO2VIxzjI-CeFJplRV4yFZ0FY4rwKTFJngPDxGDqH_VuiQMmzraYMXb82lH-H3DmnIJqMjDfHLKuyuWWQkCNwftg0G',
-                category: 'digital',
-                features: ['Digital strategy sessions', 'Change management tools', 'Implementation support']
-            }
-        ];
-        
-        programs.length = 0;
-        programs.push(...staticPrograms);
-        renderPrograms();
+    // Render error state
+    const renderError = () => {
+        const container = document.querySelector('[data-programs]');
+        if (!container) return;
+
+        container.innerHTML = `
+            <div class="col-span-full text-center py-12">
+                <p class="text-red-600">Failed to load programs. Please try again later.</p>
+            </div>
+        `;
     };
 
     // Render programs dynamically
@@ -79,9 +49,18 @@ const ProgramPage = (() => {
         const container = document.querySelector('[data-programs]');
         if (!container) return;
 
-        const filteredPrograms = currentFilter === 'all' 
-            ? programs 
+        const filteredPrograms = currentFilter === 'all'
+            ? programs
             : programs.filter(p => p.category === currentFilter);
+
+        if (filteredPrograms.length === 0) {
+            container.innerHTML = `
+                <div class="col-span-full text-center py-12">
+                    <p class="text-gray-600">No programs available at the moment.</p>
+                </div>
+            `;
+            return;
+        }
 
         const html = filteredPrograms.map(program => `
             <div class="border-2 border-slate-800 rounded-[2rem] p-8 flex flex-col" data-program="${program.id}" data-category="${program.category}">
@@ -119,7 +98,7 @@ const ProgramPage = (() => {
     const handleEnrollClick = async (e) => {
         const programId = e.target.dataset.program;
         const program = programs.find(p => p.id == programId);
-        
+
         if (!program) return;
 
         // Check if user is logged in
@@ -140,7 +119,7 @@ const ProgramPage = (() => {
     // Show enrollment form modal
     const showEnrollModal = (program) => {
         const id = 'enroll-modal';
-        
+
         const content = `
             <form id="enroll-form" data-program="${program.id}">
                 <div class="mb-4">
@@ -246,13 +225,13 @@ const ProgramPage = (() => {
         document.querySelectorAll('[data-filter]').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 currentFilter = e.target.dataset.filter;
-                
+
                 // Update active state
                 document.querySelectorAll('[data-filter]').forEach(b => {
                     b.classList.remove('active', 'bg-[var(--primary-blue)]', 'text-white');
                 });
                 e.target.classList.add('active', 'bg-[var(--primary-blue)]', 'text-white');
-                
+
                 renderPrograms();
             });
         });

@@ -47,7 +47,11 @@ const API = (() => {
         };
 
         if (data && (method === 'POST' || method === 'PUT' || method === 'PATCH')) {
-            config.body = JSON.stringify(data);
+            if (headers['Content-Type'] === 'application/x-www-form-urlencoded') {
+                config.body = data;
+            } else {
+                config.body = JSON.stringify(data);
+            }
         }
 
         try {
@@ -165,10 +169,15 @@ const API = (() => {
 
     // ===================== AUTHENTICATION =====================
     const auth = {
-        login: (email, password) => post('/login', {
-            username: email,
-            password: password
-        }),
+        login: (email, password) => {
+            const formData = new URLSearchParams();
+            formData.append('username', email);
+            formData.append('password', password);
+
+            return request('POST', '/login', formData, {
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+            });
+        },
         register: (name, phone, email, password) => post('/register', {
             name,
             phone_number: phone,
@@ -179,45 +188,45 @@ const API = (() => {
 
     // ===================== USERS =====================
     const users = {
-        getAll: () => get('/user'),
+        getAll: () => get('/user/'),
         getById: (id) => get(`/user/${id}`),
-        create: (data) => post('/user', data),
+        create: (data) => post('/user/', data),
         update: (id, data) => put(`/user/${id}`, data),
         delete: (id) => del(`/user/${id}`)
     };
 
     // ===================== PROGRAMS =====================
     const programs = {
-        getAll: () => get('/programs'),
+        getAll: () => get('/programs/'),
         getById: (id) => get(`/programs/${id}`),
-        create: (data) => post('/programs', data),
+        create: (data) => post('/programs/', data),
         update: (id, data) => put(`/programs/${id}`, data),
         delete: (id) => del(`/programs/${id}`)
     };
 
     // ===================== SERVICES =====================
     const services = {
-        getAll: () => get('/services'),
+        getAll: () => get('/services/'),
         getById: (id) => get(`/services/${id}`),
-        create: (data) => post('/services', data),
+        create: (data) => post('/services/', data),
         update: (id, data) => put(`/services/${id}`, data),
         delete: (id) => del(`/services/${id}`)
     };
 
     // ===================== EVENTS =====================
     const events = {
-        getAll: () => get('/event'),
+        getAll: () => get('/event/'),
         getById: (id) => get(`/event/${id}`),
-        create: (data) => post('/event', data),
+        create: (data) => post('/event/', data),
         update: (id, data) => put(`/event/${id}`, data),
         delete: (id) => del(`/event/${id}`)
     };
 
     // ===================== BLOG =====================
     const blog = {
-        getAll: () => get('/blog'),
+        getAll: () => get('/blog/'),
         getById: (id) => get(`/blog/${id}`),
-        create: (data) => post('/blog', data),
+        create: (data) => post('/blog/', data),
         update: (id, data) => put(`/blog/${id}`, data),
         delete: (id) => del(`/blog/${id}`)
     };

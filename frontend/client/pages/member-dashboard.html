@@ -4,238 +4,411 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Member Dashboard - Empoweredgeclub</title>
+    <title>Empoweredgeclub · member dashboard</title>
+    <!-- Tailwind + plugins -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
-        rel="stylesheet" />
+    <!-- Google Font & Material Icons (better consistency) -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
         rel="stylesheet" />
-    <style type="text/tailwindcss">
-        :root {
-            --primary-blue: #2563eb;
-            --primary-green: #22c55e;
-            --text-dark: #1e293b;
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0,1" />
+    <style>
+        * {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
         }
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--text-dark);
-        }
+
+        /* smooth sidebar active state & custom shadows */
         .sidebar-btn {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1rem;
-            border-radius: 0.375rem;
+            transition: all 0.18s ease;
+            border-radius: 0.75rem;
             font-weight: 500;
-            color: #475569;
-            transition: all 0.2s;
-            width: 100%;
-            text-align: left;
-            background: none;
-            border: none;
-            cursor: pointer;
         }
+
         .sidebar-btn.active {
-            background-color: var(--primary-blue);
+            background: #1e3c5f;
+            /* deep navy instead of bright blue — more premium */
             color: white;
+            box-shadow: 0 6px 12px -6px rgba(0, 47, 85, 0.2);
         }
-        .sidebar-btn:hover:not(.active) {
-            background-color: #f1f5f9;
+
+        .sidebar-btn:not(.active):hover {
+            background: #f0f4fa;
+            color: #0b2a41;
         }
-        .sidebar-btn.active:hover {
-            background-color: #1d4ed8;
+
+        /* card subtle elevation */
+        .dashboard-card {
+            background: white;
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 28px -12px rgba(0, 32, 64, 0.12);
+            border: 1px solid #f0f3f9;
+            transition: box-shadow 0.2s;
+        }
+
+        .dashboard-card:hover {
+            box-shadow: 0 18px 32px -12px rgba(18, 52, 99, 0.18);
+        }
+
+        /* profile stat tiles (enrolled / events) */
+        .stat-tile {
+            border-radius: 1.25rem;
+            padding: 1.5rem 1.2rem;
+            background: linear-gradient(145deg, #fafdff, #ffffff);
+            border: 1px solid #e9eff5;
+            box-shadow: 0 4px 10px -6px rgba(0, 0, 0, 0.04);
+        }
+
+        /* custom green/blue pastels for the zero states */
+        .bg-soft-blue {
+            background: #ebf3ff;
+            color: #1a497c;
+        }
+
+        .bg-soft-green {
+            background: #e7f5ea;
+            color: #14633b;
+        }
+
+        /* material icon fill & weight */
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        /* nicer focus ring */
+        input:focus,
+        button:focus-visible {
+            outline: 2px solid #2b6c9e;
+            outline-offset: 2px;
         }
     </style>
 </head>
 
-<body class="bg-white">
+<body class="bg-[#f5f8fe] antialiased text-[#162b3a]">
+
     <div class="flex h-screen">
-        <!-- Sidebar -->
-        <div class="w-48 bg-white border-r border-gray-100 p-6">
-            <a href="index.html" class="flex items-center gap-2 mb-12">
-                <img src="../resources/WhatsApp_Image_2026-01-11_at_21.31.54-removebg-preview.png" alt="Logo" class="w-8 h-8">
+        <!-- ========== SIDEBAR (refined, deeper navy/charcoal) ========== -->
+        <div class="w-64 bg-[#0e1d30] p-6 flex flex-col shadow-xl">
+            <!-- logo area -->
+            <a href="#" class="flex items-center gap-3 mb-10 px-2">
+                <div class="w-8 h-8 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center">
+                    <span class="material-symbols-outlined text-white text-xl">bolt</span>
+                </div>
                 <div>
-                    <span class="text-sm font-bold text-slate-900 block leading-none">Empoweredgeclub</span>
-                    <span class="text-xs text-[var(--primary-green)] font-medium">Dashboard</span>
+                    <span
+                        class="text-base font-semibold text-white tracking-tight block leading-5">Empoweredgeclub</span>
+                    <span class="text-xs font-medium text-emerald-300/90">member portal</span>
                 </div>
             </a>
-            
-            <nav class="space-y-2">
-                <button onclick="switchSection('overview')" class="sidebar-btn active" id="overview-btn">
-                    <span class="material-symbols-outlined text-lg">dashboard</span>
-                    Overview
+
+            <!-- primary nav -->
+            <nav class="space-y-1.5 flex-1">
+                <button onclick="switchSection('overview')"
+                    class="sidebar-btn w-full flex items-center gap-3 px-4 py-3 text-white/80 hover:text-white active"
+                    id="overview-btn">
+                    <span class="material-symbols-outlined text-[22px]">dashboard</span>
+                    <span class="text-sm font-medium">Overview</span>
                 </button>
-                <button onclick="switchSection('profile')" class="sidebar-btn" id="profile-btn">
-                    <span class="material-symbols-outlined text-lg">person</span>
-                    My Profile
+                <button onclick="switchSection('profile')"
+                    class="sidebar-btn w-full flex items-center gap-3 px-4 py-3 text-white/80 hover:text-white"
+                    id="profile-btn">
+                    <span class="material-symbols-outlined text-[22px]">person</span>
+                    <span class="text-sm font-medium">My Profile</span>
                 </button>
-                <button onclick="switchSection('programs')" class="sidebar-btn" id="programs-btn">
-                    <span class="material-symbols-outlined text-lg">school</span>
-                    My Programs
+                <button onclick="switchSection('programs')"
+                    class="sidebar-btn w-full flex items-center gap-3 px-4 py-3 text-white/80 hover:text-white"
+                    id="programs-btn">
+                    <span class="material-symbols-outlined text-[22px]">school</span>
+                    <span class="text-sm font-medium">My Programs</span>
                 </button>
-                <button onclick="switchSection('settings')" class="sidebar-btn" id="settings-btn">
-                    <span class="material-symbols-outlined text-lg">settings</span>
-                    Settings
+                <button onclick="switchSection('settings')"
+                    class="sidebar-btn w-full flex items-center gap-3 px-4 py-3 text-white/80 hover:text-white"
+                    id="settings-btn">
+                    <span class="material-symbols-outlined text-[22px]">settings</span>
+                    <span class="text-sm font-medium">Settings</span>
                 </button>
             </nav>
 
-            <div class="mt-12 pt-6 border-t border-gray-100">
-                <button class="sidebar-btn text-red-600 hover:bg-red-50">
-                    <span class="material-symbols-outlined text-lg">logout</span>
-                    Logout
+            <!-- logout & footer -->
+            <div class="mt-auto pt-6 border-t border-white/10">
+                <button
+                    class="sidebar-btn w-full flex items-center gap-3 px-4 py-3 text-amber-100/70 hover:text-white hover:bg-white/5 rounded-xl">
+                    <span class="material-symbols-outlined text-[22px]">logout</span>
+                    <span class="text-sm font-medium">Logout</span>
                 </button>
+                <div class="text-[0.7rem] text-white/30 mt-4 px-4">v2.4 · secure</div>
             </div>
         </div>
 
-        <!-- Main Content -->
-        <div class="flex-1 flex flex-col">
-            <!-- Top Bar -->
-            <div class="bg-white border-b border-gray-100 px-8 py-6 flex justify-between items-center">
-                <h1 class="text-2xl font-bold text-slate-900">Member Dashboard</h1>
-                <div class="flex items-center gap-4">
-                    <span class="text-sm text-slate-600">Welcome back!</span>
-                    <button class="bg-slate-100 hover:bg-slate-200 text-slate-900 px-4 py-2 rounded-lg font-medium transition-colors text-sm">
+        <!-- ========== MAIN PANEL ========== -->
+        <div class="flex-1 flex flex-col overflow-hidden bg-[#f5f8fe]">
+
+            <!-- top bar (light, crisp) -->
+            <div
+                class="bg-white/90 backdrop-blur-sm border-b border-[#e3eaf2] px-8 py-4 flex justify-between items-center flex-shrink-0">
+                <h1 class="text-2xl font-bold text-[#13293d] tracking-tight">Member Dashboard</h1>
+                <div class="flex items-center gap-5">
+                    <span class="text-sm text-slate-500 flex items-center gap-2">
+                        <span class="inline-block w-2 h-2 bg-emerald-500 rounded-full"></span>
+                        Welcome back, 123
+                    </span>
+                    <button
+                        class="bg-[#eef3f9] hover:bg-[#e2e9f3] text-[#1f3b5c] px-5 py-2 rounded-xl text-sm font-semibold transition flex items-center gap-2 shadow-sm">
+                        <span class="material-symbols-outlined text-base">logout</span>
                         Logout
                     </button>
                 </div>
             </div>
 
-            <!-- Dashboard Content -->
-            <div class="flex-1 overflow-auto p-8">
-                <!-- Overview Section -->
-                <div id="overview-section" class="section-content">
-                    <div class="bg-white rounded-lg p-8 mb-8">
-                        <div class="flex items-start gap-8">
-                            <!-- User Info -->
-                            <div class="flex items-center gap-6 flex-shrink-0">
-                                <div class="w-20 h-20 bg-slate-300 rounded-full flex items-center justify-center flex-shrink-0">
-                                    <span class="material-symbols-outlined text-4xl text-slate-600">person</span>
+            <!-- scrollable content -->
+            <div class="flex-1 overflow-y-auto p-7 lg:p-9 space-y-7">
+
+                <!-- OVERVIEW SECTION (visible by default) -->
+                <div id="overview-section" class="section-content space-y-7">
+
+                    <!-- Profile + stats card (merged, elegant) -->
+                    <div class="dashboard-card p-7">
+                        <div class="flex flex-wrap items-start gap-8">
+                            <!-- left: avatar + member id block -->
+                            <div class="flex items-center gap-5 min-w-[260px]">
+                                <div
+                                    class="w-20 h-20 bg-gradient-to-br from-indigo-100 to-slate-200 rounded-2xl flex items-center justify-center shadow-inner">
+                                    <span
+                                        class="material-symbols-outlined text-5xl text-[#20456e]">account_circle</span>
                                 </div>
                                 <div>
-                                    <p class="text-sm text-slate-600">Member ID</p>
-                                    <p class="text-3xl font-bold text-slate-900">123</p>
-                                    <p class="text-sm text-slate-600 mt-2">Youth Member</p>
-                                    <p class="text-xs text-slate-500">medzaya2@gmail.com</p>
+                                    <div class="text-xs font-semibold uppercase tracking-wider text-slate-500">Member ID
+                                    </div>
+                                    <div class="text-3xl font-bold text-[#13293d]">123</div>
+                                    <div class="flex items-center gap-2 mt-1.5">
+                                        <span
+                                            class="bg-[#dde9fc] text-[#1b4c7c] text-xs font-medium px-3 py-1 rounded-full">Youth
+                                            Member</span>
+                                    </div>
+                                    <div class="text-sm text-slate-500 mt-2 flex items-center gap-1">
+                                        <span class="material-symbols-outlined text-base">mail</span> medzaya2@gmail.com
+                                    </div>
                                 </div>
                             </div>
 
-                            <!-- Welcome & Stats -->
+                            <!-- welcome & stats in one row -->
                             <div class="flex-1">
-                                <h2 class="text-2xl font-bold text-slate-900 mb-6">Welcome back, 123!</h2>
-                                <div class="grid grid-cols-2 gap-6">
-                                    <div class="bg-[var(--primary-blue)] rounded-lg p-6 text-white">
-                                        <p class="text-sm font-medium mb-2">Enrolled Programs</p>
-                                        <p class="text-4xl font-bold">0</p>
+                                <h2 class="text-2xl font-semibold text-[#183c57] mb-5 flex items-center gap-2">
+                                    👋 Welcome back, 123!
+                                    <span class="text-sm font-normal text-slate-400 ml-2">· last login today</span>
+                                </h2>
+                                <div class="grid grid-cols-2 gap-5">
+                                    <!-- enrolled programs tile -->
+                                    <div class="stat-tile flex items-center justify-between">
+                                        <div>
+                                            <p class="text-sm font-medium text-slate-500">Enrolled Programs</p>
+                                            <p class="text-4xl font-bold text-[#1f3e5c]">0</p>
+                                        </div>
+                                        <div
+                                            class="w-12 h-12 bg-soft-blue rounded-2xl flex items-center justify-center">
+                                            <span
+                                                class="material-symbols-outlined text-3xl text-[#1e4e7a]">menu_book</span>
+                                        </div>
                                     </div>
-                                    <div class="bg-[var(--primary-green)] rounded-lg p-6 text-white">
-                                        <p class="text-sm font-medium mb-2">Upcoming Events</p>
-                                        <p class="text-4xl font-bold">0</p>
+                                    <!-- upcoming events tile -->
+                                    <div class="stat-tile flex items-center justify-between">
+                                        <div>
+                                            <p class="text-sm font-medium text-slate-500">Upcoming Events</p>
+                                            <p class="text-4xl font-bold text-[#1f3e5c]">0</p>
+                                        </div>
+                                        <div
+                                            class="w-12 h-12 bg-soft-green rounded-2xl flex items-center justify-center">
+                                            <span class="material-symbols-outlined text-3xl text-[#14633b]">event</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Recent Activity -->
-                    <div class="bg-white rounded-lg p-8">
-                        <h3 class="text-lg font-bold text-slate-900 mb-6">Recent Activity</h3>
-                        <div class="text-center py-12">
-                            <span class="material-symbols-outlined text-4xl text-slate-300 block mb-2">inbox</span>
-                            <p class="text-slate-500">No recent activity to show.</p>
+                    <!-- Recent Activity Card (refined empty state) -->
+                    <div class="dashboard-card p-7">
+                        <div class="flex items-center justify-between mb-5">
+                            <h3 class="text-lg font-semibold text-[#1d3649] flex items-center gap-2">
+                                <span class="material-symbols-outlined text-[#38658f]">history</span>
+                                Recent Activity
+                            </h3>
+                            <span class="text-xs bg-slate-100 text-slate-600 px-3 py-1.5 rounded-full">last 30
+                                days</span>
+                        </div>
+                        <div
+                            class="flex flex-col items-center justify-center py-12 bg-[#fafdff] rounded-2xl border border-dashed border-slate-200">
+                            <span class="material-symbols-outlined text-5xl text-slate-300 mb-3">inbox</span>
+                            <p class="text-base font-medium text-slate-400">Your activity feed is quiet</p>
+                            <p class="text-sm text-slate-400 mt-1 max-w-sm text-center">No recent actions — enrolled
+                                programs or events will appear here.</p>
+                            <div class="flex gap-1.5 mt-4">
+                                <span class="w-1.5 h-1.5 rounded-full bg-slate-300"></span>
+                                <span class="w-1.5 h-1.5 rounded-full bg-slate-300"></span>
+                                <span class="w-1.5 h-1.5 rounded-full bg-slate-300"></span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Profile Section -->
+                <!-- PROFILE SECTION (hidden by default) -->
                 <div id="profile-section" class="section-content hidden">
-                    <div class="bg-white rounded-lg p-8">
-                        <h2 class="text-2xl font-bold text-slate-900 mb-6">My Profile</h2>
-                        <form class="space-y-6">
-                            <div class="grid grid-cols-2 gap-6">
+                    <div class="dashboard-card p-8">
+                        <h2 class="text-2xl font-bold text-[#13293d] mb-7 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-3xl text-[#38658f]">badge</span>
+                            My Profile
+                        </h2>
+                        <form class="space-y-7 max-w-3xl">
+                            <div class="grid grid-cols-2 gap-5">
                                 <div>
-                                    <label class="block text-sm font-semibold text-slate-700 mb-2">First Name</label>
-                                    <input type="text" value="John" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-transparent" />
+                                    <label class="block text-sm font-semibold text-slate-700 mb-2">First name</label>
+                                    <input type="text" value="John"
+                                        class="w-full px-5 py-3.5 border border-slate-200 rounded-xl bg-white/70 focus:bg-white focus:border-[#2e6191] focus:ring-2 focus:ring-[#2e6191]/20 transition" />
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-semibold text-slate-700 mb-2">Last Name</label>
-                                    <input type="text" value="Doe" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-transparent" />
+                                    <label class="block text-sm font-semibold text-slate-700 mb-2">Last name</label>
+                                    <input type="text" value="Doe"
+                                        class="w-full px-5 py-3.5 border border-slate-200 rounded-xl bg-white/70 focus:bg-white focus:border-[#2e6191] focus:ring-2 focus:ring-[#2e6191]/20 transition" />
                                 </div>
                             </div>
                             <div>
-                                <label class="block text-sm font-semibold text-slate-700 mb-2">Email</label>
-                                <input type="email" value="john.doe@example.com" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-transparent" />
+                                <label class="block text-sm font-semibold text-slate-700 mb-2">Email address</label>
+                                <input type="email" value="medzaya2@gmail.com"
+                                    class="w-full px-5 py-3.5 border border-slate-200 rounded-xl bg-white/70 focus:bg-white focus:border-[#2e6191] focus:ring-2 focus:ring-[#2e6191]/20 transition" />
                             </div>
                             <div>
-                                <label class="block text-sm font-semibold text-slate-700 mb-2">Phone</label>
-                                <input type="tel" value="+1 (555) 123-4567" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-transparent" />
+                                <label class="block text-sm font-semibold text-slate-700 mb-2">Phone number</label>
+                                <input type="tel" value="+1 (555) 123-4567"
+                                    class="w-full px-5 py-3.5 border border-slate-200 rounded-xl bg-white/70 focus:bg-white focus:border-[#2e6191] focus:ring-2 focus:ring-[#2e6191]/20 transition" />
                             </div>
-                            <button type="button" class="bg-[var(--primary-blue)] text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold">
-                                Save Changes
+                            <button type="button"
+                                class="bg-[#1c4b77] hover:bg-[#0f3a5d] text-white font-semibold px-8 py-3.5 rounded-xl text-sm shadow-md shadow-blue-900/10 transition flex items-center gap-2">
+                                <span class="material-symbols-outlined text-lg">save</span> Save Changes
                             </button>
                         </form>
                     </div>
                 </div>
 
-                <!-- Programs Section -->
+                <!-- PROGRAMS SECTION (placeholder refined) -->
                 <div id="programs-section" class="section-content hidden">
-                    <div class="bg-white rounded-lg p-8">
-                        <h2 class="text-2xl font-bold text-slate-900 mb-6">My Programs</h2>
+                    <div class="dashboard-card p-8">
+                        <h2 class="text-2xl font-bold text-[#13293d] mb-6 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-3xl text-[#38658f]">school</span>
+                            My Programs
+                        </h2>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div class="border-2 border-slate-200 rounded-lg p-6">
-                                <h3 class="font-bold text-slate-900 mb-2">Leadership Mastery</h3>
-                                <p class="text-sm text-slate-600 mb-4">Transform into an exceptional leader.</p>
-                                <div class="space-y-2">
+                            <div class="border border-slate-200 rounded-2xl p-6 bg-white hover:shadow-md transition">
+                                <h3 class="font-bold text-[#1d3649] text-lg mb-1">Leadership Mastery</h3>
+                                <p class="text-sm text-slate-500 mb-5">Transform into an exceptional leader.</p>
+                                <div class="space-y-3">
                                     <div class="flex justify-between text-sm">
-                                        <span class="text-slate-600">Progress</span>
-                                        <span class="font-bold text-[var(--primary-blue)]">65%</span>
+                                        <span class="text-slate-500">Progress</span>
+                                        <span class="font-bold text-[#2365a4]">65%</span>
                                     </div>
-                                    <div class="w-full bg-slate-200 rounded-full h-2">
-                                        <div class="bg-[var(--primary-blue)] h-2 rounded-full" style="width: 65%"></div>
+                                    <div class="w-full bg-slate-100 rounded-full h-2.5">
+                                        <div class="bg-[#1d4e7c] h-2.5 rounded-full" style="width:65%"></div>
                                     </div>
                                 </div>
-                                <button class="mt-4 w-full bg-[var(--primary-blue)] text-white py-2 rounded-lg hover:bg-blue-700 transition-colors font-semibold text-sm">
-                                    Continue Learning
+                                <button
+                                    class="mt-6 w-full bg-[#eaf1fb] hover:bg-[#dce8f5] text-[#1a4770] font-semibold py-3 rounded-xl transition flex items-center justify-center gap-2 text-sm">
+                                    <span class="material-symbols-outlined text-lg">play_circle</span> Continue
                                 </button>
+                            </div>
+                            <!-- empty second card to illustrate zero enrollment? but we keep as is -->
+                            <div
+                                class="border border-dashed border-slate-200 rounded-2xl p-6 bg-slate-50/50 flex flex-col items-center justify-center text-slate-400">
+                                <span class="material-symbols-outlined text-4xl">add_circle</span>
+                                <p class="text-sm font-medium mt-2">Explore more programs</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Settings Section -->
+                <!-- SETTINGS SECTION -->
                 <div id="settings-section" class="section-content hidden">
-                    <div class="bg-white rounded-lg p-8">
-                        <h2 class="text-2xl font-bold text-slate-900 mb-6">Settings</h2>
-                        <div class="space-y-6">
-                            <div class="flex items-center justify-between pb-4 border-b border-slate-200">
+                    <div class="dashboard-card p-8">
+                        <h2 class="text-2xl font-bold text-[#13293d] mb-7 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-3xl text-[#38658f]">tune</span>
+                            Settings
+                        </h2>
+                        <div class="space-y-6 max-w-xl">
+                            <div class="flex items-center justify-between p-5 bg-[#f8fbfe] rounded-xl">
                                 <div>
-                                    <p class="font-semibold text-slate-900">Email Notifications</p>
-                                    <p class="text-sm text-slate-600">Receive email updates about your programs</p>
+                                    <p class="font-semibold text-[#162b3a]">Email Notifications</p>
+                                    <p class="text-sm text-slate-500">Receive updates about your programs</p>
                                 </div>
-                                <input type="checkbox" checked class="w-5 h-5 cursor-pointer" />
+                                <div class="relative inline-block w-12 h-6 rounded-full bg-[#2365a4] cursor-pointer">
+                                    <input type="checkbox" checked class="sr-only peer" />
+                                    <span
+                                        class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-all peer-checked:left-7"></span>
+                                </div>
                             </div>
-                            <div class="flex items-center justify-between pb-4 border-b border-slate-200">
+                            <div class="flex items-center justify-between p-5 bg-[#f8fbfe] rounded-xl">
                                 <div>
-                                    <p class="font-semibold text-slate-900">Two-Factor Authentication</p>
-                                    <p class="text-sm text-slate-600">Enhance your account security</p>
+                                    <p class="font-semibold text-[#162b3a]">Two-Factor Authentication</p>
+                                    <p class="text-sm text-slate-500">Enhance your account security</p>
                                 </div>
-                                <input type="checkbox" class="w-5 h-5 cursor-pointer" />
+                                <div class="relative inline-block w-12 h-6 rounded-full bg-slate-300 cursor-pointer">
+                                    <input type="checkbox" class="sr-only peer" />
+                                    <span
+                                        class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-all peer-checked:left-7"></span>
+                                </div>
                             </div>
-                            <div class="flex items-center justify-between">
+                            <div class="flex items-center justify-between p-5 bg-[#f8fbfe] rounded-xl">
                                 <div>
-                                    <p class="font-semibold text-slate-900">Dark Mode</p>
-                                    <p class="text-sm text-slate-600">Switch to dark theme</p>
+                                    <p class="font-semibold text-[#162b3a]">Dark Mode</p>
+                                    <p class="text-sm text-slate-500">Switch to dark theme</p>
                                 </div>
-                                <input type="checkbox" class="w-5 h-5 cursor-pointer" />
+                                <div class="relative inline-block w-12 h-6 rounded-full bg-slate-300 cursor-pointer">
+                                    <input type="checkbox" class="sr-only peer" />
+                                    <span
+                                        class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-all peer-checked:left-7"></span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- subtle footer line (optional) -->
+            <div class="text-xs text-slate-400 px-9 py-3 border-t border-slate-100/80">
+                Empoweredgeclub · member ID 123 · medzaya2@gmail.com
+            </div>
         </div>
     </div>
 
+    <!-- simple section switch (unchanged) -->
+    <script src="../scripts/utils.js"></script>
+    <script src="../scripts/api.js"></script>
+    <script src="../scripts/auth.js"></script>
+    <script src="../scripts/toast.js"></script>
     <script>
+        // Check authentication
+        if (!Auth.requireAuth()) {
+            // requireAuth will redirect if not logged in
+        } else {
+            // Load user data
+            const user = Auth.getCurrentUser();
+            if (user) {
+                // Determine display name
+                const displayName = user.name || user.email.split('@')[0];
+
+                // Update specific elements
+                // 1. Sidebar name (if exists)
+                // 2. Top bar name (if exists)
+                // 3. Welcome message
+                // 4. Profile section inputs
+
+                // For now, let's update the welcome message and profile inputs
+                const welcomeMsg = document.querySelector('h2.text-2xl.font-bold.text-slate-900.mb-6');
+                if (welcomeMsg) welcomeMsg.textContent = `Welcome back, ${displayName}!`;
+
+                // Update profile inputs if they exist
+                // This is a simple implementation, a more robust one would fetch full profile from API
+                const emailInput = document.querySelector('input[type="email"]');
+                if (emailInput) emailInput.value = user.email;
+            }
+        }
+
         function switchSection(section) {
             // Hide all sections
             document.querySelectorAll('.section-content').forEach(el => el.classList.add('hidden'));
@@ -246,6 +419,16 @@
             document.querySelectorAll('.sidebar-btn').forEach(btn => btn.classList.remove('active'));
             document.getElementById(section + '-btn').classList.add('active');
         }
+
+        // Handle Logout
+        const logoutBtns = document.querySelectorAll('button');
+        logoutBtns.forEach(btn => {
+            if (btn.textContent.trim() === 'Logout') {
+                btn.addEventListener('click', () => {
+                    Auth.logout();
+                });
+            }
+        });
     </script>
 </body>
 
