@@ -50,7 +50,8 @@ const AdminDashboard = (() => {
                 <td class="px-6 py-4">
                     <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">Active</span>
                 </td>
-                <td class="px-6 py-4 text-center">
+                <td class="px-6 py-4 text-center space-x-2">
+                    <button class="text-blue-600 hover:underline font-semibold text-sm" onclick="AdminDashboard.editItem('programs', ${program.id})">Edit</button>
                     <button class="text-red-500 hover:underline font-semibold text-sm" onclick="AdminDashboard.deleteItem('programs', ${program.id})">Delete</button>
                 </td>
             </tr>
@@ -61,6 +62,7 @@ const AdminDashboard = (() => {
         e.preventDefault();
         const form = e.target;
         const submitBtn = form.querySelector('button[type="submit"]');
+        const editId = form.dataset.editId; // Check if we're editing
 
         // Disable button
         submitBtn.disabled = true;
@@ -76,17 +78,23 @@ const AdminDashboard = (() => {
                 image_url: 'https://via.placeholder.com/300' // Placeholder for now
             };
 
-            // Map the "Duration" input to start/end date logic if needed, or just store it in description?
-            // For now sticking to schema requirements.
+            let result;
+            if (editId) {
+                // Update existing program
+                result = await API.programs.update(editId, data);
+            } else {
+                // Create new program
+                result = await API.programs.create(data);
+            }
 
-            const result = await API.programs.create(data);
             if (result.success) {
-                Toast.success('Program created successfully');
+                Toast.success(editId ? 'Program updated successfully' : 'Program created successfully');
                 closeModal('programModal');
                 form.reset();
+                delete form.dataset.editId; // Clear edit mode
                 loadPrograms();
             } else {
-                Toast.error(result.error || 'Failed to create program');
+                Toast.error(result.error || 'Failed to save program');
             }
         } catch (error) {
             console.error(error);
@@ -118,7 +126,8 @@ const AdminDashboard = (() => {
                 <td class="px-6 py-4">
                     <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">Active</span>
                 </td>
-                <td class="px-6 py-4 text-center">
+                <td class="px-6 py-4 text-center space-x-2">
+                    <button class="text-blue-600 hover:underline font-semibold text-sm" onclick="AdminDashboard.editItem('services', ${service.id || 0})">Edit</button>
                     <button class="text-red-500 hover:underline font-semibold text-sm" onclick="AdminDashboard.deleteItem('services', ${service.id || 0})">Delete</button>
                     <!-- Note: service.id might be missing in response if not standardized, check schema -->
                 </td>
@@ -130,6 +139,7 @@ const AdminDashboard = (() => {
         e.preventDefault();
         const form = e.target;
         const submitBtn = form.querySelector('button[type="submit"]');
+        const editId = form.dataset.editId;
 
         submitBtn.disabled = true;
         submitBtn.textContent = 'Saving...';
@@ -142,14 +152,21 @@ const AdminDashboard = (() => {
                 image_url: 'https://via.placeholder.com/300'
             };
 
-            const result = await API.services.create(data);
+            let result;
+            if (editId) {
+                result = await API.services.update(editId, data);
+            } else {
+                result = await API.services.create(data);
+            }
+
             if (result.success) {
-                Toast.success('Service created successfully');
+                Toast.success(editId ? 'Service updated successfully' : 'Service created successfully');
                 closeModal('serviceModal');
                 form.reset();
+                delete form.dataset.editId;
                 loadServices();
             } else {
-                Toast.error(result.error || 'Failed to create service');
+                Toast.error(result.error || 'Failed to save service');
             }
         } catch (error) {
             console.error(error);
@@ -179,7 +196,8 @@ const AdminDashboard = (() => {
                 <td class="px-6 py-4 text-slate-600">General</td>
                 <td class="px-6 py-4 text-slate-600">-</td>
                 <td class="px-6 py-4 text-slate-600">-</td>
-                <td class="px-6 py-4 text-center">
+                <td class="px-6 py-4 text-center space-x-2">
+                    <button class="text-blue-600 hover:underline font-semibold text-sm" onclick="AdminDashboard.editItem('blog', ${item.id})">Edit</button>
                     <button class="text-red-500 hover:underline font-semibold text-sm" onclick="AdminDashboard.deleteItem('blog', ${item.id})">Delete</button>
                 </td>
             </tr>
@@ -190,6 +208,7 @@ const AdminDashboard = (() => {
         e.preventDefault();
         const form = e.target;
         const submitBtn = form.querySelector('button[type="submit"]');
+        const editId = form.dataset.editId;
 
         submitBtn.disabled = true;
         submitBtn.textContent = 'Saving...';
@@ -201,14 +220,21 @@ const AdminDashboard = (() => {
                 image_url: 'https://via.placeholder.com/300'
             };
 
-            const result = await API.blog.create(data);
+            let result;
+            if (editId) {
+                result = await API.blog.update(editId, data);
+            } else {
+                result = await API.blog.create(data);
+            }
+
             if (result.success) {
-                Toast.success('News created successfully');
+                Toast.success(editId ? 'News updated successfully' : 'News created successfully');
                 closeModal('newsModal');
                 form.reset();
+                delete form.dataset.editId;
                 loadNews();
             } else {
-                Toast.error(result.error || 'Failed to create news');
+                Toast.error(result.error || 'Failed to save news');
             }
         } catch (error) {
             console.error(error);
@@ -243,13 +269,67 @@ const AdminDashboard = (() => {
                     <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">Active</span>
                 </td>
                 <td class="px-6 py-4 text-slate-600">-</td>
-                <td class="px-6 py-4 text-center">
+                <td class="px-6 py-4 text-center space-x-2">
+                     <button class="text-blue-600 hover:underline font-semibold text-sm" onclick="AdminDashboard.editItem('users', ${user.id})">Edit</button>
                      <button class="text-red-500 hover:underline font-semibold text-sm" onclick="AdminDashboard.deleteItem('users', ${user.id})">Delete</button>
                 </td>
             </tr>
         `).join('');
     };
 
+
+    // --- Shared ---
+    const editItem = async (type, id) => {
+        let item, modalId, form;
+
+        // Find the item in state
+        if (type === 'programs') {
+            item = state.programs.find(p => p.id === id);
+            modalId = 'programModal';
+        } else if (type === 'services') {
+            item = state.services.find(s => s.id === id);
+            modalId = 'serviceModal';
+        } else if (type === 'blog') {
+            item = state.news.find(n => n.id === id);
+            modalId = 'newsModal';
+        } else if (type === 'users') {
+            item = state.users.find(u => u.id === id);
+            Toast.info('User editing not yet implemented');
+            return;
+        }
+
+        if (!item) {
+            Toast.error('Item not found');
+            return;
+        }
+
+        // Open modal and pre-fill form
+        openModal(modalId);
+        form = document.querySelector(`#${modalId} form`);
+        if (!form) return;
+
+        // Set edit mode
+        form.dataset.editId = id;
+
+        // Pre-fill form fields based on type
+        if (type === 'programs') {
+            form.querySelector('input[placeholder*="Program Name"]').value = item.name || '';
+            form.querySelector('textarea').value = item.description || '';
+        } else if (type === 'services') {
+            form.querySelector('input[placeholder*="Service Name"]').value = item.name || '';
+            form.querySelector('textarea').value = item.description || '';
+            form.querySelector('input[type="number"]').value = item.price || 0;
+        } else if (type === 'blog') {
+            form.querySelector('input[placeholder="News title"]').value = item.title || '';
+            form.querySelector('textarea').value = item.body || '';
+        }
+
+        // Update modal title to indicate editing
+        const modalTitle = document.querySelector(`#${modalId} h2`);
+        if (modalTitle) {
+            modalTitle.textContent = `Edit ${type === 'blog' ? 'News' : type.slice(0, -1).charAt(0).toUpperCase() + type.slice(1, -1)}`;
+        }
+    };
 
     // --- Shared ---
     const deleteItem = async (type, id) => {
@@ -299,6 +379,7 @@ const AdminDashboard = (() => {
 
     return {
         init,
+        editItem,
         deleteItem
     };
 })();
