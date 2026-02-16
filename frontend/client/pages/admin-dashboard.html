@@ -142,8 +142,8 @@
                         <span class="inline-block w-2 h-2 bg-emerald-500 rounded-full"></span>
                         Admin User
                     </span>
-                    <button
-                        class="bg-[#e7edf8] hover:bg-[#dae3f0] text-[#1c3f62] px-3 sm:px-5 py-2 rounded-xl text-sm font-semibold transition flex items-center gap-2 shadow-sm">
+                    <button id="logoutBtn"
+                        class="logout-btn bg-[#e7edf8] hover:bg-[#dae3f0] text-[#1c3f62] px-3 sm:px-5 py-2 rounded-xl text-sm font-semibold transition flex items-center gap-2 shadow-sm">
                         <span class="material-symbols-outlined text-base">logout</span>
                         <span class="hidden sm:inline">Logout</span>
                     </button>
@@ -175,6 +175,16 @@
                     class="sidebar-link w-full text-left px-4 py-3 flex items-center gap-3 text-white/90 hover:text-white"
                     onclick="switchSection(event, 'services')">
                     <span class="material-symbols-outlined">room_service</span> Services
+                </button>
+                <button
+                    class="sidebar-link w-full text-left px-4 py-3 flex items-center gap-3 text-white/90 hover:text-white"
+                    onclick="switchSection(event, 'events')">
+                    <span class="material-symbols-outlined">event</span> Events
+                </button>
+                <button
+                    class="sidebar-link w-full text-left px-4 py-3 flex items-center gap-3 text-white/90 hover:text-white"
+                    onclick="switchSection(event, 'events')">
+                    <span class="material-symbols-outlined">event</span> Events
                 </button>
                 <button
                     class="sidebar-link w-full text-left px-4 py-3 flex items-center gap-3 text-white/90 hover:text-white"
@@ -213,7 +223,7 @@
                     <div class="stat-card p-6 flex justify-between items-center">
                         <div>
                             <p class="text-slate-500 text-sm font-semibold">Total Members</p>
-                            <p class="text-4xl font-bold text-[#14273e] mt-1">1,245</p>
+                            <p class="text-4xl font-bold text-[#14273e] mt-1">0</p>
                         </div>
                         <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-[#2463ac]">
                             <span class="material-symbols-outlined text-3xl">group</span>
@@ -222,7 +232,7 @@
                     <div class="stat-card p-6 flex justify-between items-center">
                         <div>
                             <p class="text-slate-500 text-sm font-semibold">Active Programs</p>
-                            <p class="text-4xl font-bold text-[#14273e] mt-1">8</p>
+                            <p class="text-4xl font-bold text-[#14273e] mt-1">0</p>
                         </div>
                         <div
                             class="w-14 h-14 bg-emerald-50 rounded-xl flex items-center justify-center text-emerald-700">
@@ -232,7 +242,7 @@
                     <div class="stat-card p-6 flex justify-between items-center">
                         <div>
                             <p class="text-slate-500 text-sm font-semibold">Services Offered</p>
-                            <p class="text-4xl font-bold text-[#14273e] mt-1">12</p>
+                            <p class="text-4xl font-bold text-[#14273e] mt-1">0</p>
                         </div>
                         <div class="w-14 h-14 bg-purple-50 rounded-xl flex items-center justify-center text-purple-700">
                             <span class="material-symbols-outlined text-3xl">room_service</span>
@@ -241,7 +251,7 @@
                     <div class="stat-card p-6 flex justify-between items-center">
                         <div>
                             <p class="text-slate-500 text-sm font-semibold">Recent Posts</p>
-                            <p class="text-4xl font-bold text-[#14273e] mt-1">23</p>
+                            <p class="text-4xl font-bold text-[#14273e] mt-1">0</p>
                         </div>
                         <div class="w-14 h-14 bg-amber-50 rounded-xl flex items-center justify-center text-amber-700">
                             <span class="material-symbols-outlined text-3xl">newspaper</span>
@@ -312,33 +322,7 @@
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-slate-100">
-                            <tr class="hover:bg-slate-50/80">
-                                <td class="px-6 py-4 font-semibold">Leadership Mastery</td>
-                                <td class="px-6 py-4">8 weeks</td>
-                                <td class="px-6 py-4">234</td>
-                                <td class="px-6 py-4"><span class="badge-active">Active</span></td>
-                                <td class="px-6 py-4 text-center"><button onclick="openModal('programModal')"
-                                        class="text-[#1f4a7a] font-semibold text-sm mr-4 hover:underline">Edit</button><button
-                                        class="text-red-500 text-sm hover:underline">Delete</button></td>
-                            </tr>
-                            <tr class="hover:bg-slate-50/80">
-                                <td class="px-6 py-4 font-semibold">Executive Coaching</td>
-                                <td class="px-6 py-4">12 weeks</td>
-                                <td class="px-6 py-4">156</td>
-                                <td class="px-6 py-4"><span class="badge-active">Active</span></td>
-                                <td class="px-6 py-4 text-center"><button onclick="openModal('programModal')"
-                                        class="text-[#1f4a7a] font-semibold text-sm mr-4 hover:underline">Edit</button><button
-                                        class="text-red-500 text-sm hover:underline">Delete</button></td>
-                            </tr>
-                            <tr class="hover:bg-slate-50/80">
-                                <td class="px-6 py-4 font-semibold">Team Synergy</td>
-                                <td class="px-6 py-4">6 weeks</td>
-                                <td class="px-6 py-4">89</td>
-                                <td class="px-6 py-4"><span class="badge-inactive">Inactive</span></td>
-                                <td class="px-6 py-4 text-center"><button onclick="openModal('programModal')"
-                                        class="text-[#1f4a7a] font-semibold text-sm mr-4 hover:underline">Edit</button><button
-                                        class="text-red-500 text-sm hover:underline">Delete</button></td>
-                            </tr>
+                            <!-- Dynamically loaded -->
                         </tbody>
                     </table>
                 </div>
@@ -364,24 +348,7 @@
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-slate-100">
-                            <tr>
-                                <td class="px-6 py-4 font-semibold">Strategy Audit</td>
-                                <td class="px-6 py-4">$2,500</td>
-                                <td class="px-6 py-4">42</td>
-                                <td class="px-6 py-4"><span class="badge-active">Active</span></td>
-                                <td class="px-6 py-4 text-center"><button onclick="openModal('serviceModal')"
-                                        class="text-[#1f4a7a] font-semibold text-sm mr-4">Edit</button><button
-                                        class="text-red-500 text-sm">Delete</button></td>
-                            </tr>
-                            <tr>
-                                <td class="px-6 py-4 font-semibold">Culture Design</td>
-                                <td class="px-6 py-4">$3,000</td>
-                                <td class="px-6 py-4">28</td>
-                                <td class="px-6 py-4"><span class="badge-active">Active</span></td>
-                                <td class="px-6 py-4 text-center"><button onclick="openModal('serviceModal')"
-                                        class="text-[#1f4a7a] font-semibold text-sm mr-4">Edit</button><button
-                                        class="text-red-500 text-sm">Delete</button></td>
-                            </tr>
+                            <!-- Dynamically loaded -->
                         </tbody>
                     </table>
                 </div>
@@ -407,24 +374,33 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <!-- Dynamically loaded -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- ========== EVENTS SECTION ========== -->
+            <section id="events" class="section-content hidden space-y-8">
+                <div class="flex justify-between items-center">
+                    <h1 class="text-3xl font-bold text-[#14273e]">📅 Events</h1>
+                    <button onclick="openModal('eventModal')"
+                        class="bg-[#1f4a7a] hover:bg-[#123b61] text-white px-6 py-3 rounded-xl font-semibold flex items-center gap-2 shadow-md transition">
+                        <span class="material-symbols-outlined">add</span> Add Event
+                    </button>
+                </div>
+                <div class="table-wrapper overflow-x-auto">
+                    <table class="w-full min-w-[640px]">
+                        <thead class="bg-[#f4f8ff] border-b">
                             <tr>
-                                <td class="px-6 py-4 font-semibold">The Future of Leadership</td>
-                                <td>Leadership</td>
-                                <td>Jan 10, 2025</td>
-                                <td>1,204</td>
-                                <td class="text-center"><button onclick="openModal('newsModal')"
-                                        class="text-[#1f4a7a] mr-4">Edit</button><button
-                                        class="text-red-500">Delete</button></td>
+                                <th class="px-6 py-4 text-left">Event Name</th>
+                                <th class="px-6 py-4 text-left">Date</th>
+                                <th class="px-6 py-4 text-left">Location</th>
+                                <th class="px-6 py-4 text-center">Actions</th>
                             </tr>
-                            <tr>
-                                <td class="px-6 py-4 font-semibold">Building Resilient Teams</td>
-                                <td>Team Building</td>
-                                <td>Jan 8, 2025</td>
-                                <td>856</td>
-                                <td class="text-center"><button onclick="openModal('newsModal')"
-                                        class="text-[#1f4a7a] mr-4">Edit</button><button
-                                        class="text-red-500">Delete</button></td>
-                            </tr>
+                        </thead>
+                        <tbody class="divide-y">
+                            <!-- Events loaded dynamically -->
                         </tbody>
                     </table>
                 </div>
@@ -447,27 +423,7 @@
                             </tr>
                         </thead>
                         <tbody class="divide-y">
-                            <tr>
-                                <td class="px-6 py-3">Jan 12, 2025 10:32 AM</td>
-                                <td class="font-semibold">Admin User</td>
-                                <td>Created</td>
-                                <td>Program: Leadership</td>
-                                <td><span class="badge-success">Success</span></td>
-                            </tr>
-                            <tr>
-                                <td>Jan 12, 2025 09:15 AM</td>
-                                <td class="font-semibold">Sarah Johnson</td>
-                                <td>Enrolled</td>
-                                <td>Executive Coaching</td>
-                                <td><span class="badge-success">Success</span></td>
-                            </tr>
-                            <tr>
-                                <td>Jan 11, 2025 03:45 PM</td>
-                                <td class="font-semibold">Admin User</td>
-                                <td>Updated</td>
-                                <td>News: Future of Leadership</td>
-                                <td><span class="badge-success">Success</span></td>
-                            </tr>
+                            <!-- Dynamically loaded if implemented -->
                         </tbody>
                     </table>
                 </div>
@@ -489,33 +445,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="px-6 py-4 font-semibold">John Doe</td>
-                                <td>john.doe@example.com</td>
-                                <td><span class="badge-role-member px-3 py-1 rounded-full">Member</span></td>
-                                <td><span class="badge-active">Active</span></td>
-                                <td>3</td>
-                                <td class="text-center"><button class="text-[#1f4a7a] mr-3">Edit</button><button
-                                        class="text-red-500">Suspend</button></td>
-                            </tr>
-                            <tr>
-                                <td class="font-semibold">Sarah Johnson</td>
-                                <td>sarah.j@example.com</td>
-                                <td><span class="badge-role-member">Member</span></td>
-                                <td><span class="badge-active">Active</span></td>
-                                <td>2</td>
-                                <td class="text-center"><button class="text-[#1f4a7a] mr-3">Edit</button><button
-                                        class="text-red-500">Suspend</button></td>
-                            </tr>
-                            <tr>
-                                <td class="font-semibold">Mike Chen</td>
-                                <td>mike.chen@example.com</td>
-                                <td><span class="badge-role-admin px-3 py-1 rounded-full">Admin</span></td>
-                                <td><span class="badge-active">Active</span></td>
-                                <td>-</td>
-                                <td class="text-center"><button class="text-[#1f4a7a] mr-3">Edit</button><button
-                                        class="text-red-500">Remove</button></td>
-                            </tr>
+                            <!-- Dynamically loaded -->
                         </tbody>
                     </table>
                 </div>
@@ -528,21 +458,145 @@
     <div id="programModal" class="modal fixed inset-0 bg-black bg-opacity-50 z-50 justify-center items-center p-4">
         <div class="bg-white rounded-2xl max-w-md w-full p-8 shadow-2xl">
             <h2 class="text-2xl font-bold mb-6">Add/Edit Program</h2>
-            <form class="space-y-4">...</form>
+            <form class="space-y-4">
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-1">Program Name</label>
+                    <input type="text" placeholder="e.g. Leadership Mastery"
+                        class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500"
+                        required>
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-1">Description</label>
+                    <textarea placeholder="Program description..."
+                        class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500"
+                        rows="3" required></textarea>
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-1">Image URL</label>
+                    <input type="url" placeholder="https://example.com/image.jpg"
+                        class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="flex justify-end gap-3 mt-6">
+                    <button type="button" onclick="closeModal('programModal')"
+                        class="px-4 py-2 text-slate-600 hover:bg-slate-100 rounded-lg">Cancel</button>
+                    <button type="submit"
+                        class="px-6 py-2 bg-[#1f4a7a] text-white rounded-lg font-semibold hover:bg-[#123b61]">Save</button>
+                </div>
+            </form>
         </div>
     </div>
+
     <!-- Service Modal -->
     <div id="serviceModal" class="modal fixed inset-0 bg-black bg-opacity-50 z-50 justify-center items-center p-4">
-        <div class="bg-white rounded-2xl max-w-md w-full p-8">
+        <div class="bg-white rounded-2xl max-w-md w-full p-8 shadow-2xl">
             <h2 class="text-2xl font-bold mb-6">Add/Edit Service</h2>
-            <form>...</form>
+            <form class="space-y-4">
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-1">Service Name</label>
+                    <input type="text" placeholder="e.g. Strategy Audit"
+                        class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500"
+                        required>
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-1">Price</label>
+                    <input type="number" step="0.01" placeholder="Price"
+                        class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500"
+                        required>
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-1">Image URL</label>
+                    <input type="url" placeholder="https://example.com/image.jpg"
+                        class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-1">Description</label>
+                    <textarea placeholder="Service description..."
+                        class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500"
+                        rows="3" required></textarea>
+                </div>
+                <div class="flex justify-end gap-3 mt-6">
+                    <button type="button" onclick="closeModal('serviceModal')"
+                        class="px-4 py-2 text-slate-600 hover:bg-slate-100 rounded-lg">Cancel</button>
+                    <button type="submit"
+                        class="px-6 py-2 bg-[#1f4a7a] text-white rounded-lg font-semibold hover:bg-[#123b61]">Save</button>
+                </div>
+            </form>
         </div>
     </div>
+
     <!-- News Modal -->
     <div id="newsModal" class="modal fixed inset-0 bg-black bg-opacity-50 z-50 justify-center items-center p-4">
-        <div class="bg-white rounded-2xl max-w-md w-full p-8">
+        <div class="bg-white rounded-2xl max-w-md w-full p-8 shadow-2xl">
             <h2 class="text-2xl font-bold mb-6">Add/Edit News</h2>
-            <form>...</form>
+            <form class="space-y-4">
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-1">News Title</label>
+                    <input type="text" placeholder="News title"
+                        class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500"
+                        required>
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-1">Image URL</label>
+                    <input type="url" placeholder="https://example.com/image.jpg"
+                        class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-1">Body Content</label>
+                    <textarea placeholder="Article content..."
+                        class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500"
+                        rows="5" required></textarea>
+                </div>
+                <div class="flex justify-end gap-3 mt-6">
+                    <button type="button" onclick="closeModal('newsModal')"
+                        class="px-4 py-2 text-slate-600 hover:bg-slate-100 rounded-lg">Cancel</button>
+                    <button type="submit"
+                        class="px-6 py-2 bg-[#1f4a7a] text-white rounded-lg font-semibold hover:bg-[#123b61]">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Event Modal -->
+    <div id="eventModal" class="modal fixed inset-0 bg-black bg-opacity-50 z-50 justify-center items-center p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-8 shadow-2xl">
+            <h2 class="text-2xl font-bold mb-6">Add/Edit Event</h2>
+            <form class="space-y-4">
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-1">Event Name</label>
+                    <input type="text" placeholder="e.g. Annual Youth Summit"
+                        class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500"
+                        required>
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-1">Date</label>
+                    <input type="date"
+                        class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500"
+                        required>
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-1">Location</label>
+                    <input type="text" placeholder="Event location"
+                        class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500"
+                        required>
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-1">Description</label>
+                    <textarea placeholder="Event description..."
+                        class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500"
+                        rows="3" required></textarea>
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-1">Image URL</label>
+                    <input type="url" placeholder="https://example.com/image.jpg"
+                        class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="flex justify-end gap-3 mt-6">
+                    <button type="button" onclick="closeModal('eventModal')"
+                        class="px-4 py-2 text-slate-600 hover:bg-slate-100 rounded-lg">Cancel</button>
+                    <button type="submit"
+                        class="px-6 py-2 bg-[#1f4a7a] text-white rounded-lg font-semibold hover:bg-[#123b61]">Save</button>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -599,14 +653,19 @@
                     if (id === 'programModal') title.textContent = 'Add Program';
                     else if (id === 'serviceModal') title.textContent = 'Add Service';
                     else if (id === 'newsModal') title.textContent = 'Add News';
+                    else if (id === 'eventModal') title.textContent = 'Add Event';
                 }
             }
         }
         function closeModal(id) { document.getElementById(id).classList.remove('active'); }
         document.querySelectorAll('.modal').forEach(m => m.addEventListener('click', e => { if (e.target === m) closeModal(m.id); }));
     </script>
-    <!-- dummy scripts to avoid missing file errors (optional) -->
-    <script>window.utils = {}; window.api = {}; window.auth = {}; window.toast = {}; window.admin = {};</script>
+    <!-- Core Scripts -->
+    <script src="../scripts/utils.js"></script>
+    <script src="../scripts/api.js"></script>
+    <script src="../scripts/toast.js"></script>
+    <script src="../scripts/auth.js"></script>
+    <script src="../scripts/admin.js"></script>
 </body>
 
 </html>

@@ -61,7 +61,7 @@ const HomePage = (() => {
                 <div class="border-2 border-slate-800 rounded-[2rem] p-6 flex flex-col items-center text-center animate-on-scroll slide-up stagger-${index + 1} hover:shadow-lg transition-shadow" data-program-id="${program.id}">
                     <h3 class="text-lg font-bold mb-6">${program.name}</h3>
                     <div class="w-32 h-32 border-2 border-slate-800 diamond-clip mb-6 p-1 animate-on-scroll scale-up">
-                        <img class="w-full h-full object-cover diamond-clip" src="${images[index] || images[0]}" alt="${program.name}" />
+                        <img class="w-full h-full object-cover diamond-clip" src="${program.image_url || images[index] || images[0]}" alt="${program.name}" />
                     </div>
                     <p class="text-sm text-slate-600 mb-8 px-2">${program.description}</p>
                     <button class="mt-auto flex items-center gap-2 border border-slate-800 px-4 py-1.5 rounded-full text-xs font-bold hover:bg-slate-100 transition-colors uppercase tracking-wider program-see-more" data-program-id="${program.id}">
@@ -92,7 +92,7 @@ const HomePage = (() => {
                 <div class="border-2 border-slate-800 rounded-[2rem] p-6 flex flex-col items-center text-center animate-on-scroll slide-up stagger-${index + 1} hover:shadow-lg transition-shadow" data-service-id="${service.id}">
                     <h3 class="text-lg font-bold mb-6">${service.name}</h3>
                     <div class="w-32 h-32 border-2 border-slate-800 diamond-clip mb-6 p-1 animate-on-scroll scale-up">
-                        <img class="w-full h-full object-cover diamond-clip" src="${service.image || images[index] || images[0]}" alt="${service.name}" />
+                        <img class="w-full h-full object-cover diamond-clip" src="${service.image_url || images[index] || images[0]}" alt="${service.name}" />
                     </div>
                     <p class="text-sm text-slate-600 mb-8 px-2">${service.description}</p>
                     <div class="text-xl font-bold text-[var(--primary-blue)] mb-4">$${service.price}</div>
@@ -132,7 +132,7 @@ const HomePage = (() => {
     // Show service booking modal
     const showServiceBookingModal = (service) => {
         const id = 'service-booking-modal';
-        
+
         const content = `
             <form id="service-booking-form" data-service-id="${service.id}">
                 <div class="mb-4">
@@ -186,7 +186,7 @@ const HomePage = (() => {
     // Submit service booking
     const submitBooking = async (form, modalId) => {
         const formData = new FormData(form);
-        
+
         const submitBtn = document.querySelector(`#${modalId} .modal-btn.btn-primary`);
         const originalText = submitBtn.textContent;
         submitBtn.disabled = true;

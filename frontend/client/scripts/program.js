@@ -66,7 +66,7 @@ const ProgramPage = (() => {
             <div class="border-2 border-slate-800 rounded-[2rem] p-8 flex flex-col" data-program="${program.id}" data-category="${program.category}">
                 <h3 class="text-2xl font-bold mb-4 text-[var(--primary-blue)]">${program.title}</h3>
                 <div class="w-40 h-40 border-2 border-slate-800 diamond-clip mb-6 p-1 mx-auto">
-                    <img class="w-full h-full object-cover diamond-clip" src="${program.image}" alt="${program.title}" />
+                    <img class="w-full h-full object-cover diamond-clip" src="${program.image_url || 'https://via.placeholder.com/300'}" alt="${program.title}" />
                 </div>
                 <p class="text-slate-700 mb-6 flex-grow">${program.description}</p>
                 <div class="space-y-2 mb-6">

@@ -11,6 +11,7 @@ class User(Base):
     email = Column(String, unique=True)
     password = Column(String)
     phone_number = Column(String, nullable=True)
+    role = Column(String, default="member")
 
     blogs = relationship("Blog", back_populates="owner")
 
@@ -46,8 +47,10 @@ class Event(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String)
+    description = Column(String, nullable=True)
     date = Column(String)
     location = Column(String)
+    image_url = Column(String, nullable=True)
 
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
 

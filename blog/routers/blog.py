@@ -15,7 +15,7 @@ router=APIRouter(
 
 
 @router.get('/',)
-def show_all(db:Session=Depends(get_db),current_user:schema.UserResponse=Depends(oauth.get_current_user)):
+def show_all(db:Session=Depends(get_db)):
     return blog.get_all(db)
 
 

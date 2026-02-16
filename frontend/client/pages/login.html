@@ -52,7 +52,7 @@
                     class="bg-[var(--primary-blue)] text-white px-6 py-2 rounded-md hover:bg-blue-700 transition-colors font-medium hidden md:inline-block">
                     Sign Up
                 </a>
-            
+
                 <!-- Mobile Menu Button -->
                 <button id="mobileMenuToggle" class="md:hidden p-2 text-slate-600 hover:text-[var(--primary-blue)]">
                     <span class="material-symbols-outlined text-3xl">menu</span>
@@ -64,53 +64,63 @@
     <div id="mobileSidebar" class="fixed inset-0 z-50 md:hidden hidden">
         <!-- Overlay -->
         <div id="sidebarOverlay" class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
-        
+
         <!-- Sidebar -->
-        <aside class="absolute top-0 left-0 h-full w-64 bg-white shadow-2xl transform -translate-x-full transition-transform duration-300 ease-in-out" id="sidebarPanel">
+        <aside
+            class="absolute top-0 left-0 h-full w-64 bg-white shadow-2xl transform -translate-x-full transition-transform duration-300 ease-in-out"
+            id="sidebarPanel">
             <div class="flex flex-col h-full">
                 <!-- Sidebar Header -->
                 <div class="flex items-center justify-between p-4 border-b border-gray-200">
                     <div class="flex items-center gap-2">
-                        <img src="../resources/WhatsApp_Image_2026-01-11_at_21.31.54-removebg-preview.png" alt="Logo" class="w-8 h-8">
+                        <img src="../resources/WhatsApp_Image_2026-01-11_at_21.31.54-removebg-preview.png" alt="Logo"
+                            class="w-8 h-8">
                         <span class="font-bold text-slate-900">Menu</span>
                     </div>
                     <button id="closeSidebar" class="p-2 hover:bg-gray-100 rounded-lg">
                         <span class="material-symbols-outlined">close</span>
                     </button>
                 </div>
-                
+
                 <!-- Navigation Links -->
                 <nav class="flex-1 overflow-y-auto p-4">
                     <div class="space-y-1">
-                        <a href="index.html" class="flex items-center gap-3 px-4 py-3 text-slate-700 hover:bg-blue-50 hover:text-[var(--primary-blue)] rounded-lg font-medium transition">
+                        <a href="index.html"
+                            class="flex items-center gap-3 px-4 py-3 text-slate-700 hover:bg-blue-50 hover:text-[var(--primary-blue)] rounded-lg font-medium transition">
                             <span class="material-symbols-outlined">home</span>
                             Home
                         </a>
-                        <a href="about.html" class="flex items-center gap-3 px-4 py-3 text-slate-700 hover:bg-blue-50 hover:text-[var(--primary-blue)] rounded-lg font-medium transition">
+                        <a href="about.html"
+                            class="flex items-center gap-3 px-4 py-3 text-slate-700 hover:bg-blue-50 hover:text-[var(--primary-blue)] rounded-lg font-medium transition">
                             <span class="material-symbols-outlined">info</span>
                             About Us
                         </a>
-                        <a href="program.html" class="flex items-center gap-3 px-4 py-3 text-slate-700 hover:bg-blue-50 hover:text-[var(--primary-blue)] rounded-lg font-medium transition">
+                        <a href="program.html"
+                            class="flex items-center gap-3 px-4 py-3 text-slate-700 hover:bg-blue-50 hover:text-[var(--primary-blue)] rounded-lg font-medium transition">
                             <span class="material-symbols-outlined">school</span>
                             Programs
                         </a>
-                        <a href="service.html" class="flex items-center gap-3 px-4 py-3 text-slate-700 hover:bg-blue-50 hover:text-[var(--primary-blue)] rounded-lg font-medium transition">
+                        <a href="service.html"
+                            class="flex items-center gap-3 px-4 py-3 text-slate-700 hover:bg-blue-50 hover:text-[var(--primary-blue)] rounded-lg font-medium transition">
                             <span class="material-symbols-outlined">room_service</span>
                             Services
                         </a>
-                        <a href="news.html" class="flex items-center gap-3 px-4 py-3 text-slate-700 hover:bg-blue-50 hover:text-[var(--primary-blue)] rounded-lg font-medium transition">
+                        <a href="news.html"
+                            class="flex items-center gap-3 px-4 py-3 text-slate-700 hover:bg-blue-50 hover:text-[var(--primary-blue)] rounded-lg font-medium transition">
                             <span class="material-symbols-outlined">newspaper</span>
                             News & Updates
                         </a>
                     </div>
                 </nav>
-                
+
                 <!-- Sidebar Footer -->
                 <div class="p-4 border-t border-gray-200">
-                    <a href="signup.html" class="block w-full bg-[var(--primary-blue)] text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium text-center hidden md:inline-block">
+                    <a href="signup.html"
+                        class="block w-full bg-[var(--primary-blue)] text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium text-center hidden md:inline-block">
                         Get Started
                     </a>
-                    <a href="login.html" class="block w-full mt-2 border border-[var(--primary-blue)] text-[var(--primary-blue)] px-6 py-3 rounded-lg hover:bg-blue-50 transition-colors font-medium text-center hidden md:inline-block">
+                    <a href="login.html"
+                        class="block w-full mt-2 border border-[var(--primary-blue)] text-[var(--primary-blue)] px-6 py-3 rounded-lg hover:bg-blue-50 transition-colors font-medium text-center hidden md:inline-block">
                         Login
                     </a>
                 </div>
@@ -178,7 +188,9 @@
                 <div class="mt-8">
                     <p class="text-center text-slate-600">
                         Don't have an account?
-                        <a href="signup.html" class="text-[var(--primary-blue)] font-bold hover:underline hidden md:inline-block">Sign up</a>
+                        <a href="signup.html"
+                            class="text-[var(--primary-blue)] font-bold hover:underline hidden md:inline-block">Sign
+                            up</a>
                     </p>
                 </div>
             </div>
@@ -231,7 +243,10 @@
     <script>
         // Check if already logged in
         if (Auth.isLoggedIn()) {
-            window.location.href = '/pages/member-dashboard.html';
+            const user = Auth.getCurrentUser();
+            window.location.href = user && user.role === 'admin'
+                ? '/pages/admin-dashboard.html'
+                : '/pages/member-dashboard.html';
         }
 
         document.getElementById('loginForm').addEventListener('submit', async (e) => {
@@ -249,8 +264,15 @@
                 const result = await Auth.login(email, password);
                 if (result.success) {
                     Toast.success('Login successful! Redirecting...');
+
+                    // Standardize redirection based on role
+                    const user = Auth.getCurrentUser();
+                    const redirectUrl = user && user.role === 'admin'
+                        ? '/pages/admin-dashboard.html'
+                        : '/pages/member-dashboard.html';
+
                     setTimeout(() => {
-                        window.location.href = '/pages/member-dashboard.html';
+                        window.location.href = redirectUrl;
                     }, 1500);
                 } else {
                     Toast.error(result.error || 'Login failed');

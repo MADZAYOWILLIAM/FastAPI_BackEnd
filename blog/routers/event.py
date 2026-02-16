@@ -17,13 +17,13 @@ router=APIRouter(
 
 
 @router.get('/')
-def show_all(db:Session=Depends(get_db),current_user:schema.User=Depends(oauth.get_current_user)):
+def show_all(db:Session=Depends(get_db)):
     return event.get_all(db)
 
 
 @router.post('/')
 def create(request: schema.Event, db: Session = Depends(get_db), current_user: schema.UserResponse = Depends(oauth.get_current_user)):
-    return event.create_event(request, db)
+    return event.create_event(request, db, current_user.id)
 
 
 @router.get('/{id}', status_code=200, response_model=schema.EventResponse)

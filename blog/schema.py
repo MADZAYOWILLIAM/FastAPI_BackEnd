@@ -7,6 +7,7 @@ class User(BaseModel):
     email: str
     password: str
     phone_number: str | None = None
+    role: str = "member"
     blogs: List['Blog'] = []
 
     class Config:
@@ -16,6 +17,7 @@ class UserResponse(BaseModel):
     name: str
     email: str
     phone_number: str | None = None
+    role: str
 
     class Config:
         from_attributes = True
@@ -134,12 +136,15 @@ class Enrollment_Program(BaseModel):
         from_attributes = True
 
 
+from typing import List, Optional
+
 class Event(BaseModel):
-    id:int
-    name:str
-    description:str
-    location:str
-    date:str
+    id: Optional[int] = None
+    name: str
+    description: str
+    location: str
+    date: str
+    image_url: Optional[str] = None
 
     class Config:
         from_attributes = True
@@ -149,6 +154,7 @@ class EventResponse(BaseModel):
     description:str
     location:str
     date:str
+    image_url: Optional[str] = None
 
     class Config:
         from_attributes=True

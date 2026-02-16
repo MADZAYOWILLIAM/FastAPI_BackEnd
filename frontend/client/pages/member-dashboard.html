@@ -128,69 +128,79 @@
                     <span class="text-sm font-medium">Settings</span>
                 </button>
             </nav>
-    <!-- Mobile Slide-in Sidebar -->
-    <div id="mobileSidebar" class="fixed inset-0 z-50 md:hidden hidden">
-        <!-- Overlay -->
-        <div id="sidebarOverlay" class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
-        
-        <!-- Sidebar -->
-        <aside class="absolute top-0 left-0 h-full w-64 bg-white shadow-2xl transform -translate-x-full transition-transform duration-300 ease-in-out" id="sidebarPanel">
-            <div class="flex flex-col h-full">
-                <!-- Sidebar Header -->
-                <div class="flex items-center justify-between p-4 border-b border-gray-200">
-                    <div class="flex items-center gap-2">
-                        <img src="../resources/WhatsApp_Image_2026-01-11_at_21.31.54-removebg-preview.png" alt="Logo" class="w-8 h-8">
-                        <span class="font-bold text-slate-900">Menu</span>
+            <!-- Mobile Slide-in Sidebar -->
+            <div id="mobileSidebar" class="fixed inset-0 z-50 md:hidden hidden">
+                <!-- Overlay -->
+                <div id="sidebarOverlay" class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+
+                <!-- Sidebar -->
+                <aside
+                    class="absolute top-0 left-0 h-full w-64 bg-white shadow-2xl transform -translate-x-full transition-transform duration-300 ease-in-out"
+                    id="sidebarPanel">
+                    <div class="flex flex-col h-full">
+                        <!-- Sidebar Header -->
+                        <div class="flex items-center justify-between p-4 border-b border-gray-200">
+                            <div class="flex items-center gap-2">
+                                <img src="../resources/WhatsApp_Image_2026-01-11_at_21.31.54-removebg-preview.png"
+                                    alt="Logo" class="w-8 h-8">
+                                <span class="font-bold text-slate-900">Menu</span>
+                            </div>
+                            <button id="closeSidebar" class="p-2 hover:bg-gray-100 rounded-lg">
+                                <span class="material-symbols-outlined">close</span>
+                            </button>
+                        </div>
+
+                        <!-- Navigation Links -->
+                        <nav class="flex-1 overflow-y-auto p-4">
+                            <div class="space-y-1">
+                                <a href="index.html"
+                                    class="flex items-center gap-3 px-4 py-3 text-slate-700 hover:bg-blue-50 hover:text-[var(--primary-blue)] rounded-lg font-medium transition">
+                                    <span class="material-symbols-outlined">home</span>
+                                    Home
+                                </a>
+                                <a href="about.html"
+                                    class="flex items-center gap-3 px-4 py-3 text-slate-700 hover:bg-blue-50 hover:text-[var(--primary-blue)] rounded-lg font-medium transition">
+                                    <span class="material-symbols-outlined">info</span>
+                                    About Us
+                                </a>
+                                <a href="program.html"
+                                    class="flex items-center gap-3 px-4 py-3 text-slate-700 hover:bg-blue-50 hover:text-[var(--primary-blue)] rounded-lg font-medium transition">
+                                    <span class="material-symbols-outlined">school</span>
+                                    Programs
+                                </a>
+                                <a href="service.html"
+                                    class="flex items-center gap-3 px-4 py-3 text-slate-700 hover:bg-blue-50 hover:text-[var(--primary-blue)] rounded-lg font-medium transition">
+                                    <span class="material-symbols-outlined">room_service</span>
+                                    Services
+                                </a>
+                                <a href="news.html"
+                                    class="flex items-center gap-3 px-4 py-3 text-slate-700 hover:bg-blue-50 hover:text-[var(--primary-blue)] rounded-lg font-medium transition">
+                                    <span class="material-symbols-outlined">newspaper</span>
+                                    News & Updates
+                                </a>
+                            </div>
+                        </nav>
+
+                        <!-- Sidebar Footer -->
+                        <div class="p-4 border-t border-gray-200">
+                            <a href="signup.html"
+                                class="block w-full bg-[var(--primary-blue)] text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium text-center hidden md:inline-block">
+                                Get Started
+                            </a>
+                            <a href="login.html"
+                                class="block w-full mt-2 border border-[var(--primary-blue)] text-[var(--primary-blue)] px-6 py-3 rounded-lg hover:bg-blue-50 transition-colors font-medium text-center hidden md:inline-block">
+                                Login
+                            </a>
+                        </div>
                     </div>
-                    <button id="closeSidebar" class="p-2 hover:bg-gray-100 rounded-lg">
-                        <span class="material-symbols-outlined">close</span>
-                    </button>
-                </div>
-                
-                <!-- Navigation Links -->
-                <nav class="flex-1 overflow-y-auto p-4">
-                    <div class="space-y-1">
-                        <a href="index.html" class="flex items-center gap-3 px-4 py-3 text-slate-700 hover:bg-blue-50 hover:text-[var(--primary-blue)] rounded-lg font-medium transition">
-                            <span class="material-symbols-outlined">home</span>
-                            Home
-                        </a>
-                        <a href="about.html" class="flex items-center gap-3 px-4 py-3 text-slate-700 hover:bg-blue-50 hover:text-[var(--primary-blue)] rounded-lg font-medium transition">
-                            <span class="material-symbols-outlined">info</span>
-                            About Us
-                        </a>
-                        <a href="program.html" class="flex items-center gap-3 px-4 py-3 text-slate-700 hover:bg-blue-50 hover:text-[var(--primary-blue)] rounded-lg font-medium transition">
-                            <span class="material-symbols-outlined">school</span>
-                            Programs
-                        </a>
-                        <a href="service.html" class="flex items-center gap-3 px-4 py-3 text-slate-700 hover:bg-blue-50 hover:text-[var(--primary-blue)] rounded-lg font-medium transition">
-                            <span class="material-symbols-outlined">room_service</span>
-                            Services
-                        </a>
-                        <a href="news.html" class="flex items-center gap-3 px-4 py-3 text-slate-700 hover:bg-blue-50 hover:text-[var(--primary-blue)] rounded-lg font-medium transition">
-                            <span class="material-symbols-outlined">newspaper</span>
-                            News & Updates
-                        </a>
-                    </div>
-                </nav>
-                
-                <!-- Sidebar Footer -->
-                <div class="p-4 border-t border-gray-200">
-                    <a href="signup.html" class="block w-full bg-[var(--primary-blue)] text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium text-center hidden md:inline-block">
-                        Get Started
-                    </a>
-                    <a href="login.html" class="block w-full mt-2 border border-[var(--primary-blue)] text-[var(--primary-blue)] px-6 py-3 rounded-lg hover:bg-blue-50 transition-colors font-medium text-center hidden md:inline-block">
-                        Login
-                    </a>
-                </div>
+                </aside>
             </div>
-        </aside>
-    </div>
 
 
             <!-- logout & footer -->
             <div class="mt-auto pt-6 border-t border-white/10">
                 <button
-                    class="sidebar-btn w-full flex items-center gap-3 px-4 py-3 text-amber-100/70 hover:text-white hover:bg-white/5 rounded-xl">
+                    class="logout-btn sidebar-btn w-full flex items-center gap-3 px-4 py-3 text-amber-100/70 hover:text-white hover:bg-white/5 rounded-xl">
                     <span class="material-symbols-outlined text-[22px]">logout</span>
                     <span class="text-sm font-medium">Logout</span>
                 </button>
@@ -211,7 +221,7 @@
                         Welcome back, 123
                     </span>
                     <button
-                        class="bg-[#eef3f9] hover:bg-[#e2e9f3] text-[#1f3b5c] px-5 py-2 rounded-xl text-sm font-semibold transition flex items-center gap-2 shadow-sm">
+                        class="logout-btn bg-[#eef3f9] hover:bg-[#e2e9f3] text-[#1f3b5c] px-5 py-2 rounded-xl text-sm font-semibold transition flex items-center gap-2 shadow-sm">
                         <span class="material-symbols-outlined text-base">logout</span>
                         Logout
                     </button>
@@ -244,7 +254,8 @@
                                             Member</span>
                                     </div>
                                     <div class="text-sm text-slate-500 mt-2 flex items-center gap-1">
-                                        <span class="material-symbols-outlined text-base">mail</span> medzaya2@gmail.com
+                                        <span class="material-symbols-outlined text-base">mail</span> <span
+                                            id="user-email-sidebar">medzaya2@gmail.com</span>
                                     </div>
                                 </div>
                             </div>
@@ -429,7 +440,7 @@
             </div>
             <!-- subtle footer line (optional) -->
             <div class="text-xs text-slate-400 px-9 py-3 border-t border-slate-100/80">
-                Empoweredgeclub · member ID 123 · medzaya2@gmail.com
+                Empoweredgeclub · member ID 123 · <span id="user-email-footer">medzaya2@gmail.com</span>
             </div>
         </div>
     </div>
@@ -440,33 +451,6 @@
     <script src="../scripts/auth.js"></script>
     <script src="../scripts/toast.js"></script>
     <script>
-        // Check authentication
-        if (!Auth.requireAuth()) {
-            // requireAuth will redirect if not logged in
-        } else {
-            // Load user data
-            const user = Auth.getCurrentUser();
-            if (user) {
-                // Determine display name
-                const displayName = user.name || user.email.split('@')[0];
-
-                // Update specific elements
-                // 1. Sidebar name (if exists)
-                // 2. Top bar name (if exists)
-                // 3. Welcome message
-                // 4. Profile section inputs
-
-                // For now, let's update the welcome message and profile inputs
-                const welcomeMsg = document.querySelector('h2.text-2xl.font-bold.text-slate-900.mb-6');
-                if (welcomeMsg) welcomeMsg.textContent = `Welcome back, ${displayName}!`;
-
-                // Update profile inputs if they exist
-                // This is a simple implementation, a more robust one would fetch full profile from API
-                const emailInput = document.querySelector('input[type="email"]');
-                if (emailInput) emailInput.value = user.email;
-            }
-        }
-
         function switchSection(section) {
             // Hide all sections
             document.querySelectorAll('.section-content').forEach(el => el.classList.add('hidden'));
@@ -477,18 +461,9 @@
             document.querySelectorAll('.sidebar-btn').forEach(btn => btn.classList.remove('active'));
             document.getElementById(section + '-btn').classList.add('active');
         }
-
-        // Handle Logout
-        const logoutBtns = document.querySelectorAll('button');
-        logoutBtns.forEach(btn => {
-            if (btn.textContent.trim() === 'Logout') {
-                btn.addEventListener('click', () => {
-                    Auth.logout();
-                });
-            }
-        });
     </script>
     <script src="../scripts/sidebar.js"></script>
+    <script src="../scripts/member.js"></script>
 </body>
 
 </html>

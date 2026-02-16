@@ -22,7 +22,8 @@ def login(request:OAuth2PasswordRequestForm=Depends(),db:Session=Depends(databas
 
 
     return {"access_token":token.create_access_token(data={"sub":user.email}),
-            "token_type":"bearer"
+            "token_type":"bearer",
+            "role": user.role
             }
 
 
@@ -43,6 +44,7 @@ def register(request: schema.User, db: Session = Depends(database.get_db)):
     return {
         "access_token": access_token,
         "token_type": "bearer",
+        "role": new_user.role,
         "message": "Registered successfully. Use this token or POST to /login.",
         "login_url": "/login",
     }

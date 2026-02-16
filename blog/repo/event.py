@@ -12,11 +12,14 @@ def get_all(db: Session):
     return events
 
 
-def create_event(request: schema.Event, db:Session):
+def create_event(request: schema.Event, db:Session, current_user_id: int):
     new_event = models.Event(
-                title=request.name,
+                name=request.name,
+                description=request.description,
                 date=request.date,
-                location=request.description
+                location=request.location,
+                image_url=request.image_url,
+                user_id=current_user_id
             )
 
     db.add(new_event)
@@ -45,9 +48,11 @@ def update_event(id: int, request: schema.Event, db: Session):
     if not event.first():
         raise HTTPException(status_code=404, detail="Event not found")
     event.update({
-        'title': request.name,
+        'name': request.name,
+        'description': request.description,
         'date': request.date,
-        'location': request.description
+        'location': request.location,
+        'image_url': request.image_url
     })
     db.commit()
     return 'Event Updated Successfully'

@@ -41,7 +41,7 @@ const Auth = (() => {
                 };
             }
 
-            const { access_token, token_type } = result.data;
+            const { access_token, token_type, role } = result.data;
 
             // Store token
             API.setToken(access_token);
@@ -49,6 +49,7 @@ const Auth = (() => {
             // Store user info (email from login)
             setCurrentUser({
                 email: email,
+                role: role,
                 loginTime: new Date().toISOString()
             });
 
@@ -105,7 +106,7 @@ const Auth = (() => {
     };
 
     // Redirect to login if not authenticated
-    const requireAuth = () => {
+    const requireAuth = (roleRequired = null) => {
         if (!isLoggedIn()) {
             Toast.warning('Please log in to continue');
             setTimeout(() => {
@@ -113,6 +114,28 @@ const Auth = (() => {
             }, 1500);
             return false;
         }
+
+        const user = getCurrentUser();
+
+        // If logged in but NO role (stale session), force logout to get fresh data
+        if (!user || user.role === undefined) {
+            Toast.warning('Session stale, please login again');
+            setTimeout(() => {
+                logout();
+            }, 1500);
+            return false;
+        }
+
+        if (roleRequired && user.role !== roleRequired) {
+            Toast.error('Unauthorized access');
+            setTimeout(() => {
+                window.location.href = user.role === 'admin'
+                    ? '/pages/admin-dashboard.html'
+                    : '/pages/member-dashboard.html';
+            }, 1500);
+            return false;
+        }
+
         return true;
     };
 
